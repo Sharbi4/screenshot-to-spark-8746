@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, X, MapPin, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
-import { heroImage, markets, rails } from "@/lib/markets";
+import { markets, rails } from "@/lib/markets";
+import heroImage from "@/assets/hero-night-market.jpg";
 import { MarketCard } from "@/components/MarketCard";
 import { Page } from "@/components/PageTransition";
 
@@ -13,8 +14,6 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Discover and book vendor stalls at night markets and farmer's markets near you." },
       { property: "og:title", content: "Vendibook — Where are you selling this weekend?" },
       { property: "og:description", content: "Discover and book vendor stalls at night markets and farmer's markets." },
-      { property: "og:image", content: heroImage },
-      { name: "twitter:image", content: heroImage },
     ],
   }),
   component: Home,
@@ -34,7 +33,7 @@ function Home() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="bg-hero-scrim absolute inset-0" />
-        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-between px-5 pb-10 pt-[max(1.25rem,env(safe-area-inset-top))]">
+        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-between px-5 pb-16 pt-[max(1.25rem,env(safe-area-inset-top))]">
           <div className="flex items-center justify-between text-on-scrim">
             <span className="text-[17px] font-semibold tracking-tight">vendibook</span>
             <span className="glass flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-foreground">
@@ -46,7 +45,7 @@ function Home() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, type: "spring", stiffness: 120, damping: 20 }}
-              className="display max-w-3xl text-[13vw] text-foreground sm:text-7xl md:text-8xl"
+              className="display max-w-3xl text-[13vw] text-on-scrim sm:text-7xl md:text-8xl"
             >
               Where are you selling this weekend?
             </motion.h1>
