@@ -26,7 +26,8 @@ const tile = (i: number) => ({
 });
 
 function Studio() {
-  const next = getMarket(bookings[0].marketId)!;
+  const first = bookings[0]!;
+  const next = getMarket(first.marketId)!;
   return (
     <Page className="mx-auto max-w-5xl px-5 pb-32 pt-[max(1.5rem,env(safe-area-inset-top))]">
       <p className="eyebrow text-muted-foreground">Studio · Maya's Mochi Co.</p>
