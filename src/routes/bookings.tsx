@@ -38,9 +38,9 @@ function Studio() {
           <Link to="/listing/$id" params={{ id: next.id }} className="block h-full min-h-[300px]">
             <img src={next.images[0]} alt={next.name} className="absolute inset-0 h-full w-full object-cover" />
             <div className="bg-card-scrim absolute inset-0" />
-            <div className="glass absolute left-4 top-4 rounded-full px-3 py-1.5 text-xs font-semibold">Next up · {bookings[0].date}</div>
+            <div className="glass absolute left-4 top-4 rounded-full px-3 py-1.5 text-xs font-semibold">Next up · {first.date}</div>
             <div className="absolute inset-x-0 bottom-0 p-5 text-on-scrim">
-              <p className="eyebrow opacity-70">{bookings[0].stall}</p>
+              <p className="eyebrow opacity-70">{first.stall}</p>
               <h2 className="mt-1 text-2xl font-semibold tracking-tight">{next.name}</h2>
               <p className="mt-1 text-sm opacity-80">{next.hours} · {next.city}</p>
             </div>
