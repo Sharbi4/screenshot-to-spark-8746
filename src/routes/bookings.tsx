@@ -54,9 +54,9 @@ function Studio() {
           </div>
           <p className="display mt-3 text-5xl">$4,820</p>
           <p className="mt-1 text-sm opacity-60">+22% vs. September · $640 spent on stalls</p>
-          <div className="mt-4 flex h-12 items-end gap-1.5">
+          <div className="mt-5 flex h-16 items-end gap-1.5">
             {bars.map((h, i) => (
-              <motion.span key={i} initial={{ height: 0 }} animate={{ height: `${h}%` }} transition={{ delay: 0.3 + i * 0.05 }} className={`flex-1 rounded-full ${i === bars.length - 1 ? "bg-honey" : "bg-primary-foreground/20"}`} />
+              <motion.span key={i} initial={{ height: 0 }} animate={{ height: `${h}%` }} transition={{ delay: 0.3 + i * 0.05 }} className={`flex-1 rounded-md ${i === bars.length - 1 ? "bg-honey" : "bg-primary-foreground/20"}`} />
             ))}
           </div>
         </motion.div>
