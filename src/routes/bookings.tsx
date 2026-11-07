@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, TrendingUp, CalendarDays, Plus, ArrowUpRight } from "lucide-react";
 import { bookings, getMarket } from "@/lib/markets";
 import { Page } from "@/components/PageTransition";
+import { BookingSummary } from "@/components/BookingSummary";
 
 export const Route = createFileRoute("/bookings")({
   head: () => ({
@@ -11,6 +12,8 @@ export const Route = createFileRoute("/bookings")({
       { name: "description", content: "Your upcoming markets, earnings, and permits in one place." },
       { property: "og:title", content: "Studio — Vendibook" },
       { property: "og:description", content: "Your upcoming markets, earnings, and permits in one place." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Studio,
@@ -26,8 +29,9 @@ const tile = (i: number) => ({
 });
 
 function Studio() {
-  const first = bookings[0]!;
-  const next = getMarket(first.marketId)!;
+  const first = bookings[0];
+  const next = first ? getMarket(first.marketId) : undefined;
+  if (!first || !next) return <Page><h1>No upcoming bookings</h1></Page>;
   return (
     <Page className="mx-auto max-w-5xl px-5 pb-32 pt-[max(1.5rem,env(safe-area-inset-top))]">
       <p className="eyebrow text-muted-foreground">Studio · Maya's Mochi Co.</p>
@@ -81,18 +85,20 @@ function Studio() {
       </div>
       <ul className="mt-4 space-y-2">
         {bookings.map((b, i) => {
-          const m = getMarket(b.marketId)!;
+          const m = getMarket(b.marketId);
+          if (!m) return null;
           return (
-            <motion.li key={b.marketId} {...tile(i + 4)}>
-              <Link to="/listing/$id" params={{ id: m.id }} className="flex items-center gap-4 rounded-3xl bg-card p-3 shadow-soft">
+            <motion.li key={b.marketId} {...tile(i + 4)} className="rounded-3xl bg-card p-3 shadow-soft">
+              <Link to="/listing/$id" params={{ id: m.id }} className="flex flex-wrap items-center gap-3 sm:flex-nowrap sm:gap-4">
                 <img src={m.images[0]} alt="" className="h-16 w-16 rounded-2xl object-cover" />
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <p className="font-semibold tracking-tight">{m.name}</p>
                   <p className="text-sm text-muted-foreground">{b.date} · {b.stall}</p>
                 </div>
                 <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${b.status === "Confirmed" ? "bg-sage/15 text-sage" : "bg-honey/20 text-honey-foreground"}`}>{b.status}</span>
                 <ArrowUpRight className="mr-1 h-4 w-4 text-muted-foreground" />
               </Link>
+              <BookingSummary marketId={b.marketId} />
             </motion.li>
           );
         })}

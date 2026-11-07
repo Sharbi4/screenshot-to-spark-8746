@@ -10,6 +10,8 @@ export const Route = createFileRoute("/profile")({
       { name: "description", content: "Manage your vendor profile, payouts, and documents." },
       { property: "og:title", content: "Profile — Vendibook" },
       { property: "og:description", content: "Manage your vendor profile, payouts, and documents." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Profile,

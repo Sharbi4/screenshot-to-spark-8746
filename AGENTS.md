@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Booking summaries use AI Gateway inside a server-only helper called through a validated server function; only server-owned public demo booking IDs are accepted to prevent arbitrary inference prompts.
+- Studio caches summaries in TanStack Query for the current session and disables automatic replay; booking persistence and private-user authorization remain separate work.

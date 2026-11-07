@@ -12,6 +12,8 @@ export const Route = createFileRoute("/map")({
       { name: "description", content: "See open vendor stalls and prices on a live market map." },
       { property: "og:title", content: "Market Map — Vendibook" },
       { property: "og:description", content: "See open vendor stalls and prices on a live market map." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: MapView,

@@ -19,6 +19,8 @@ export const Route = createFileRoute("/listing/$id")({
           { name: "description", content: loaderData.description },
           { property: "og:title", content: `${loaderData.name} — Vendibook` },
           { property: "og:description", content: loaderData.description },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
           { property: "og:image", content: loaderData.images[0] },
           { name: "twitter:image", content: loaderData.images[0] },
         ]

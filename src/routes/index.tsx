@@ -14,6 +14,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Discover and book vendor stalls at night markets and farmer's markets near you." },
       { property: "og:title", content: "Vendibook — Where are you selling this weekend?" },
       { property: "og:description", content: "Discover and book vendor stalls at night markets and farmer's markets." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
