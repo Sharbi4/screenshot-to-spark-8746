@@ -14,7 +14,125 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      partner_markets: {
+        Row: {
+          address: string
+          city: string
+          created_at: string
+          description: string
+          hours: string
+          id: string
+          name: string
+          owner_id: string
+          schedule: string
+        }
+        Insert: {
+          address: string
+          city: string
+          created_at?: string
+          description?: string
+          hours: string
+          id?: string
+          name: string
+          owner_id: string
+          schedule: string
+        }
+        Update: {
+          address?: string
+          city?: string
+          created_at?: string
+          description?: string
+          hours?: string
+          id?: string
+          name?: string
+          owner_id?: string
+          schedule?: string
+        }
+        Relationships: []
+      }
+      partner_stalls: {
+        Row: {
+          amenities: string[]
+          availability: string
+          created_at: string
+          daily_price: number
+          depth_ft: number
+          id: string
+          label: string
+          market_id: string
+          notes: string
+          width_ft: number
+        }
+        Insert: {
+          amenities?: string[]
+          availability?: string
+          created_at?: string
+          daily_price: number
+          depth_ft: number
+          id?: string
+          label: string
+          market_id: string
+          notes?: string
+          width_ft: number
+        }
+        Update: {
+          amenities?: string[]
+          availability?: string
+          created_at?: string
+          daily_price?: number
+          depth_ft?: number
+          id?: string
+          label?: string
+          market_id?: string
+          notes?: string
+          width_ft?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "partner_stalls_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "partner_markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          business_name: string
+          category: string
+          city: string
+          description: string
+          display_name: string
+          id: string
+          onboarding_complete: boolean
+          participation: string
+          phone: string
+        }
+        Insert: {
+          business_name?: string
+          category?: string
+          city?: string
+          description?: string
+          display_name?: string
+          id: string
+          onboarding_complete?: boolean
+          participation?: string
+          phone?: string
+        }
+        Update: {
+          business_name?: string
+          category?: string
+          city?: string
+          description?: string
+          display_name?: string
+          id?: string
+          onboarding_complete?: boolean
+          participation?: string
+          phone?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

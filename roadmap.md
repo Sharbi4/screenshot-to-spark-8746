@@ -1,0 +1,3 @@
+- [x] Add sign-in and saved organizer/vendor onboarding.
+- [x] Add organizer market and stall management, plus stall details.
+- [x] Verify saved data and access controls through the app.

@@ -1,7 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ChevronRight, Store, CreditCard, Bell, FileText, HelpCircle } from "lucide-react";
 import { Page } from "@/components/PageTransition";
+import { Button } from "@/components/ui/button";
+import { usePartnerSession } from "@/components/PartnerSession";
 
 export const Route = createFileRoute("/profile")({
   head: () => ({
@@ -26,6 +28,7 @@ const rows = [
 ];
 
 function Profile() {
+  const { user } = usePartnerSession();
   return (
     <Page className="mx-auto max-w-xl px-5 pb-32 pt-[max(1.5rem,env(safe-area-inset-top))]">
       <div className="flex flex-col items-center text-center">
@@ -55,6 +58,7 @@ function Profile() {
           </motion.li>
         ))}
       </ul>
+      <Button asChild className="mt-6 w-full"><Link to="/partner">{user ? "Marketpartner account" : "Join Marketpartner"}</Link></Button>
     </Page>
   );
 }
