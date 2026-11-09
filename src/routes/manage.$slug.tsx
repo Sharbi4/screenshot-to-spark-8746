@@ -30,7 +30,7 @@ export const Route = createFileRoute("/manage/$slug")({
 
 const steps = [
   ["Claim your market", "Tell us who you are and your role."],
-  ["Create your account", "Sign in or create an organizer account."],
+  ["Create your Market Partner account", "Sign in or create a Market Partner account."],
   ["Verify authority", "We confirm you manage this market before handing over control."],
   ["Review market details", "Check hours, address, and description."],
   ["Branding & photography", "Add your logo and photos you have rights to use."],
@@ -113,7 +113,7 @@ function ManageMarket() {
       <Link to="/m/$slug" params={{ slug: market.slug }} className="tap glass inline-flex rounded-full p-2.5 shadow-soft" aria-label="Back to market">
         <ChevronLeft className="h-5 w-5" />
       </Link>
-      <p className="eyebrow mt-6 text-sage">For organizers · {market.city}</p>
+      <p className="eyebrow mt-6 text-sage">Market Partner onboarding · {market.city}</p>
       <h1 className="display mt-3 text-4xl md:text-5xl">Manage {market.name}</h1>
       <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
         Take control of your market profile, manage vendor applications, organize booth assignments, and simplify bookings.
@@ -132,14 +132,14 @@ function ManageMarket() {
           ) : market.claimed && !approved ? (
             <div className="rounded-3xl bg-card p-6 shadow-soft">
               <ShieldCheck className="h-6 w-6 text-sage" />
-              <h2 className="mt-3 text-xl font-semibold tracking-tight">Managed by a verified organizer</h2>
+              <h2 className="mt-3 text-xl font-semibold tracking-tight">Managed by a verified Market Partner</h2>
               <p className="mt-2 text-[15px] text-muted-foreground">If you believe this is a mistake, contact MarketBloom support.</p>
             </div>
           ) : !ready || (enabled && isLoading) ? (
             <p role="status" className="flex items-center gap-2 text-muted-foreground"><LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" />Loading…</p>
           ) : !user ? (
             <div className="rounded-3xl bg-card p-6 shadow-soft">
-              <h2 className="text-xl font-semibold tracking-tight">Start with your organizer account</h2>
+              <h2 className="text-xl font-semibold tracking-tight">Start with your Market Partner account</h2>
               <p className="mt-2 text-[15px] text-muted-foreground">Sign in or create an account, then tell us about your role at {market.name}.</p>
               <Button asChild className="mt-5 rounded-full"><Link to="/auth" search={{ redirect: `/manage/${market.slug}` }}>Sign in or create account</Link></Button>
             </div>

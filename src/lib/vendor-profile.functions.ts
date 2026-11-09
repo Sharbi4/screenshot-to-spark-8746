@@ -26,7 +26,7 @@ export const saveMyVendorProfile = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
-/** Markets the signed-in organizer controls after verification, with upcoming appearances. */
+/** Markets the signed-in Market Partner controls after verification, with upcoming appearances. */
 export const getMyVerifiedMarkets = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
@@ -57,7 +57,7 @@ export const confirmVendorAppearance = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => appearanceSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { data: market } = await context.supabase.from("markets").select("id").eq("id", data.market_id).eq("owner_id", context.userId).maybeSingle();
-    if (!market) throw new Error("Only the verified organizer can confirm vendors for this market.");
+    if (!market) throw new Error("Only the verified Market Partner can confirm vendors for this market.");
     const { data: vendor } = await context.supabase.from("vendor_profiles").select("id").eq("slug", data.vendor_slug).eq("published", true).maybeSingle();
     if (!vendor) throw new Error("No published vendor profile at that address.");
     const { error } = await context.supabase.from("market_appearances").upsert(

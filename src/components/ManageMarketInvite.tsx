@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
-/** Tasteful organizer invitation shown near the bottom of unclaimed market profiles. */
+/** Tasteful Market Partner invitation shown near the bottom of unclaimed market profiles. */
 export function ManageMarketInvite({ slug }: { slug: string }) {
   return (
     <section aria-labelledby="manage-market" className="rounded-3xl bg-card p-6 shadow-soft md:p-8">
-      <p className="eyebrow text-sage">For organizers</p>
+      <p className="eyebrow text-sage">For Market Partners</p>
       <h2 id="manage-market" className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
         Do you manage this market?
       </h2>

@@ -24,7 +24,7 @@ export const submitMarketClaim = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { data: market, error: marketError } = await context.supabase.from("markets").select("id,claim_status").eq("id", data.market_id).maybeSingle();
     if (marketError || !market) throw new Error("Market not found.");
-    if (market.claim_status !== "unclaimed") throw new Error("This market is already managed by a verified organizer.");
+    if (market.claim_status !== "unclaimed") throw new Error("This market is already managed by a verified Market Partner.");
     const { attest: _attest, ...values } = data;
     const { error } = await context.supabase.from("market_claims").insert({ ...values, claimant_id: context.userId, status: "pending" });
     // 23505: an open claim already exists for this user and market — treat as success (idempotent resubmit).

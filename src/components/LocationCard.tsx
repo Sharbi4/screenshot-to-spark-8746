@@ -29,7 +29,7 @@ function DirectionsButton({ name, address, coords }: { name: string; address: st
 }
 
 /** Compact location card in the existing stylised map language. */
-export function LocationCard({ name, address, city, pin, coords = null, mapToken = "", mapSlug }: { name: string; address: string; city: string; pin: { x: number; y: number } | null; coords?: Coords | null; mapToken?: string; mapSlug?: string }) {
+export function LocationCard({ name, address, city, pin, coords = null, mapToken = "", mapSlug }: { name: string; address: string; city: string; pin: { x: number; y: number } | null; coords?: Coords | null; mapToken?: string; mapSlug?: string | undefined }) {
   const p = pin ?? { x: 50, y: 46 };
   const full = [address, city].filter(Boolean).join(", ");
   return (

@@ -58,7 +58,7 @@ function Profile() {
           </motion.li>
         ))}
       </ul>
-      <Button asChild className="mt-6 w-full"><Link to="/partner">{user ? "Marketpartner account" : "Join Marketpartner"}</Link></Button>
+      <Button asChild className="mt-6 w-full"><Link to="/partner">{user ? "Market Partner Portal" : "Become a Market Partner"}</Link></Button>
     </Page>
   );
 }

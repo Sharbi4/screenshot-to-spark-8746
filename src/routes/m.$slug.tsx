@@ -9,19 +9,24 @@ import { LocationCard } from "@/components/LocationCard";
 import { VendorDirectory, VendorLogo } from "@/components/VendorDirectory";
 import { ShareButton } from "@/components/ShareButton";
 import { ManageMarketInvite } from "@/components/ManageMarketInvite";
-import { ScheduleCard, ContactLinks, VendorInfo, SourcesNote, PlaceLinks } from "@/components/DirectorySections";
+import { ContactLinks, PlaceLinks, ScheduleCard, SourcesNote, VendorInfo } from "@/components/DirectorySections";
 import { getMapConfig } from "@/lib/map.functions";
+import { getSiteOrigin } from "@/lib/site.functions";
+import { openingHoursSpec } from "@/lib/schedule-format";
+import type { MarketProfile } from "@/lib/directory.server";
 
 export const Route = createFileRoute("/m/$slug")({
   loader: async ({ params }) => {
-    const [profile, config] = await Promise.all([getMarketProfile({ data: { slug: params.slug } }), getMapConfig().catch(() => ({ token: "" }))]);
+    const [profile, map, origin] = await Promise.all([getMarketProfile({ data: { slug: params.slug } }), getMapConfig().catch(() => ({ token: "" })), getSiteOrigin().catch(() => "")]);
     if (!profile) throw notFound();
-    return { ...profile, mapToken: config.token };
+    return { ...profile, mapToken: map.token, canonical: origin ? `${origin}/m/${profile.slug}` : "" };
   },
   head: ({ loaderData: m }) => {
     if (!m) return { meta: [{ title: `Market not found — ${BRAND}` }, { name: "robots", content: "noindex" }] };
-    const title = `${m.name} · ${m.city} — ${BRAND}`;
-    const description = m.description.slice(0, 160) || `${m.kindLabel} in ${m.city}. Hours, vendors, and booth information.`;
+    const d = m.directory;
+    const place = d?.state ? `${m.city}, ${d.state}` : m.city;
+    const title = `${m.name} · ${place} — ${BRAND}`;
+    const description = m.description.slice(0, 160) || `${m.kindLabel} in ${place}. Hours, location, and vendor information.`;
     const meta = [
       { title },
       { name: "description", content: description },
@@ -33,22 +38,35 @@ export const Route = createFileRoute("/m/$slug")({
       // Example listings are illustrative and should not be indexed.
       ...(m.source === "example" ? [{ name: "robots", content: "noindex" }] : []),
     ];
+    // Structured data uses only verified fields; nothing is added that the page doesn't show.
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       name: m.name,
-      description: m.description,
-      address: { "@type": "PostalAddress", streetAddress: m.address || undefined, addressLocality: m.city },
+      description: m.description || undefined,
+      address: { "@type": "PostalAddress", streetAddress: m.address || undefined, addressLocality: m.city, addressRegion: d?.state || undefined, postalCode: d?.postalCode || undefined, addressCountry: "US" },
+      ...(d?.coords ? { geo: { "@type": "GeoCoordinates", latitude: d.coords.latitude, longitude: d.coords.longitude } } : {}),
+      ...(d && openingHoursSpec(d.scheduleRules).length ? { openingHoursSpecification: openingHoursSpec(d.scheduleRules) } : {}),
+      ...(d?.contactPhone ? { telephone: d.contactPhone } : {}),
+      ...(d && Object.keys(d.socials).length ? { sameAs: Object.values(d.socials) } : {}),
       image: m.images[0],
       url: m.websiteUrl ?? undefined,
     };
-    return { meta, scripts: m.source === "directory" ? [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }] : [] };
+    return {
+      meta,
+      links: m.canonical && m.source === "directory" ? [{ rel: "canonical", href: m.canonical }] : [],
+      scripts: m.source === "directory" ? [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }] : [],
+    };
   },
   component: MarketProfilePage,
 });
 
 function MarketProfilePage() {
   const m = Route.useLoaderData();
+  return <MarketProfileView m={m} mapToken={m.mapToken} />;
+}
+
+export function MarketProfileView({ m, mapToken }: { m: MarketProfile; mapToken: string }) {
   const router = useRouter();
   const d = m.directory;
   const featured = m.vendors.filter((a) => a.featured && a.vendor.products.length).slice(0, 6);
@@ -82,19 +100,27 @@ function MarketProfilePage() {
         transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 26 }}
         className="relative z-10 mx-auto -mt-6 max-w-3xl rounded-t-3xl bg-background px-5 pt-7 md:mt-0"
       >
-        {d?.state ? <PlaceLinks state={d.state} city={m.city} /> : null}
-        <p className={`eyebrow text-sage ${d?.state ? "mt-2" : ""}`}>{m.kindLabel} · {m.city}{d?.state ? `, ${d.state}` : ""}</p>
+        <p className="eyebrow text-sage">{m.kindLabel} · {d?.state ? `${m.city}, ${d.state}` : m.city}</p>
         <h1 className="display mt-2 text-4xl md:text-5xl">{m.name}</h1>
         <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+          {d?.seasonNote && <span className="flex items-center gap-1.5"><CalendarDays className="h-4 w-4" />{d.seasonNote}</span>}
           {m.schedule && <span className="flex items-center gap-1.5"><CalendarDays className="h-4 w-4" />{m.schedule}</span>}
           {m.hours && <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" />{m.hours}</span>}
-          {m.websiteUrl && (
+          {m.websiteUrl && !d && (
             <a href={m.websiteUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 underline-offset-4 hover:underline">
               <Globe className="h-4 w-4" />Website
             </a>
           )}
         </div>
         {m.description && <p className="mt-6 text-[17px] leading-relaxed">{m.description}</p>}
+
+        {d && (
+          <>
+            <h2 className="eyebrow mt-9 text-muted-foreground">Hours & season</h2>
+            <div className="mt-3"><ScheduleCard d={d} /></div>
+            <div className="mt-4"><ContactLinks d={d} websiteUrl={m.websiteUrl} /></div>
+          </>
+        )}
 
         {m.categories.length > 0 && (
           <>
@@ -112,16 +138,8 @@ function MarketProfilePage() {
           </>
         )}
 
-        {d && (
-          <>
-            <h2 className="eyebrow mt-9 text-muted-foreground">Hours &amp; season</h2>
-            <div className="mt-3"><ScheduleCard d={d} /></div>
-            <div className="mt-4"><ContactLinks d={d} websiteUrl={m.websiteUrl} /></div>
-          </>
-        )}
-
         <h2 className="eyebrow mt-9 text-muted-foreground">Location</h2>
-        <div className="mt-3"><LocationCard name={d?.venueName ? `${m.name} · ${d.venueName}` : m.name} address={m.address} city={d?.state ? `${m.city}, ${d.state}${d.postalCode ? ` ${d.postalCode}` : ""}` : m.city} pin={m.pin} coords={d?.coords ?? null} mapToken={m.mapToken} mapSlug={m.slug} /></div>
+        <div className="mt-3"><LocationCard name={m.name} address={[d?.venueName, m.address].filter(Boolean).join(", ")} city={d ? [m.city, `${d.state} ${d.postalCode}`.trim()].filter(Boolean).join(", ") : m.city} pin={m.pin} coords={d?.coords ?? null} mapToken={mapToken} mapSlug={d?.coords ? m.slug : undefined} /></div>
 
         {featured.length > 0 && (
           <section className="mt-10">
@@ -150,8 +168,8 @@ function MarketProfilePage() {
 
         <section className="mt-10">
           <p className="eyebrow text-muted-foreground">For vendors</p>
-          <h2 className="mt-1 text-2xl font-semibold tracking-tight">Booking information</h2>
-          {d && m.boothTypes.length === 0 ? (
+          <h2 className="mt-1 text-2xl font-semibold tracking-tight">{d ? "Vendor information" : "Booking information"}</h2>
+          {d && !(d.bookingEnabled && m.boothTypes.length) ? (
             <div className="mt-4"><VendorInfo d={d} claimed={m.claimed} /></div>
           ) : m.boothTypes.length > 0 ? (
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -174,7 +192,7 @@ function MarketProfilePage() {
             </Link>
           ) : (
             <p className="mt-3 text-[15px] text-muted-foreground">
-              {m.claimed ? "Booth types and booking dates will be published by the organizer soon." : "Online booking opens once the market's organizer joins."}
+              {m.claimed ? "Booth types and booking dates will be published by the Market Partner soon." : "Online booking opens once the market's Market Partner joins."}
             </p>
           )}
         </section>
@@ -202,8 +220,11 @@ function MarketProfilePage() {
 
         {!m.claimed && <div className="mt-12"><ManageMarketInvite slug={m.slug} /></div>}
 
-        {d && (d.sources.length > 0 || d.lastVerified) ? (
-          <div className="mt-10"><SourcesNote d={d} organizer={d.organizerName} /></div>
+        {d ? (
+          <div className="mt-10 space-y-4">
+            <SourcesNote d={d} organizer={d.organizerName} />
+            <PlaceLinks state={d.state} city={m.city} />
+          </div>
         ) : m.provenance && (
           <p className="mt-10 text-xs text-muted-foreground">
             Listing information from{" "}

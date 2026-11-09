@@ -21,7 +21,7 @@ export function VendorDirectory({ appearances }: { appearances: VendorAppearance
     return (
       <div className="flex items-center gap-4 rounded-3xl bg-card p-5 shadow-soft">
         <Store className="h-6 w-6 shrink-0 text-sage" />
-        <p className="text-sm text-muted-foreground">Confirmed vendors appear here as the organizer confirms them for upcoming dates.</p>
+        <p className="text-sm text-muted-foreground">Confirmed vendors appear here as the Market Partner confirms them for upcoming dates.</p>
       </div>
     );
   }
