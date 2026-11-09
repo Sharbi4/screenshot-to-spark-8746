@@ -6,9 +6,10 @@ import { usePartnerSession } from "@/components/PartnerSession";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Page } from "@/components/PageTransition";
+import { safeRedirect } from "@/lib/safe-redirect";
 import "@lovable.dev/cloud-auth-js/styles.css";
 
-export const Route = createFileRoute("/auth")({ head: () => ({ meta: [
+export const Route = createFileRoute("/auth")({ validateSearch: (search: Record<string, unknown>): { redirect?: string | undefined } => ({ redirect: safeRedirect(search["redirect"]) }), head: () => ({ meta: [
   { title: "Marketpartner sign in — Vendibook" }, { name: "description", content: "Sign in or create your Marketpartner account." },
   { property: "og:title", content: "Marketpartner sign in — Vendibook" }, { property: "og:description", content: "Join Vendibook as a vendor or market organizer." },
   { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
@@ -20,6 +21,7 @@ function Auth() {
   const [busy, setBusy] = useState(false);
   const { user } = usePartnerSession();
   const navigate = useNavigate();
+  const next = Route.useSearch().redirect ?? "/partner";
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setBusy(true); setMessage("");
     const form = new FormData(event.currentTarget);
@@ -29,12 +31,12 @@ function Auth() {
         const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/reset-password` });
         if (error) throw error; setMessage("Check your email for a password reset link.");
       } else if (mode === "signup") {
-        const { data, error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/partner` } });
+        const { data, error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}${next}` } });
         if (error) throw error;
-        if (data.session) await navigate({ to: "/partner" }); else setMessage("Check your email to confirm your account, then sign in to complete onboarding.");
+        if (data.session) await navigate({ to: next }); else setMessage("Check your email to confirm your account, then sign in to complete onboarding.");
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error; await navigate({ to: "/partner" });
+        if (error) throw error; await navigate({ to: next });
       }
     } catch (error) { setMessage(error instanceof Error ? error.message : "Could not sign in."); }
     finally { setBusy(false); }
@@ -42,15 +44,15 @@ function Auth() {
   async function social(provider: "google" | "lovable") {
     setBusy(true); setMessage("");
     try {
-      const result = await lovable.auth.signInWithOAuth(provider, { redirect_uri: `${window.location.origin}/partner` });
+      const result = await lovable.auth.signInWithOAuth(provider, { redirect_uri: `${window.location.origin}${next}` });
       if (result.error) throw result.error;
-      if (!result.redirected) await navigate({ to: "/partner" });
+      if (!result.redirected) await navigate({ to: next });
     } catch { setMessage("Sign-in could not be completed. Please try again."); }
     finally { setBusy(false); }
   }
   return <Page className="mx-auto max-w-md px-5 pb-32 pt-12">
     <p className="eyebrow text-sage">Vendibook</p><h1 className="display mt-3 text-5xl">Marketpartner</h1>
-    {user ? <div className="mt-8"><p className="text-muted-foreground">You’re signed in.</p><Button asChild className="mt-4"><Link to="/partner">Continue to your account</Link></Button></div> : <>
+    {user ? <div className="mt-8"><p className="text-muted-foreground">You’re signed in.</p><Button asChild className="mt-4"><Link to={next}>Continue to your account</Link></Button></div> : <>
       <h2 className="mt-8 text-2xl font-semibold">{mode === "signup" ? "Create your account" : mode === "reset" ? "Reset password" : "Welcome back"}</h2>
       <form onSubmit={submit} className="mt-5 space-y-4">
         <label className="block text-sm font-medium">Email<Input name="email" type="email" autoComplete="email" required className="mt-2" /></label>

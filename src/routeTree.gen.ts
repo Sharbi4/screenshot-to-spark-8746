@@ -18,6 +18,7 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ListingIdRouteImport } from './routes/listing.$id'
 import { Route as MSlugRouteImport } from './routes/m.$slug'
+import { Route as ManageSlugRouteImport } from './routes/manage.$slug'
 import { Route as StallsIdRouteImport } from './routes/stalls.$id'
 import { Route as VSlugRouteImport } from './routes/v.$slug'
 
@@ -66,6 +67,11 @@ const MSlugRoute = MSlugRouteImport.update({
   path: '/m/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ManageSlugRoute = ManageSlugRouteImport.update({
+  id: '/manage/$slug',
+  path: '/manage/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StallsIdRoute = StallsIdRouteImport.update({
   id: '/stalls/$id',
   path: '/stalls/$id',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/listing/$id': typeof ListingIdRoute
   '/m/$slug': typeof MSlugRoute
+  '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
   '/v/$slug': typeof VSlugRoute
 }
@@ -100,6 +107,7 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/listing/$id': typeof ListingIdRoute
   '/m/$slug': typeof MSlugRoute
+  '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
   '/v/$slug': typeof VSlugRoute
 }
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/listing/$id': typeof ListingIdRoute
   '/m/$slug': typeof MSlugRoute
+  '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
   '/v/$slug': typeof VSlugRoute
 }
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/listing/$id'
     | '/m/$slug'
+    | '/manage/$slug'
     | '/stalls/$id'
     | '/v/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/listing/$id'
     | '/m/$slug'
+    | '/manage/$slug'
     | '/stalls/$id'
     | '/v/$slug'
   id:
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/listing/$id'
     | '/m/$slug'
+    | '/manage/$slug'
     | '/stalls/$id'
     | '/v/$slug'
   fileRoutesById: FileRoutesById
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   ListingIdRoute: typeof ListingIdRoute
   MSlugRoute: typeof MSlugRoute
+  ManageSlugRoute: typeof ManageSlugRoute
   StallsIdRoute: typeof StallsIdRoute
   VSlugRoute: typeof VSlugRoute
 }
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/manage/$slug': {
+      id: '/manage/$slug'
+      path: '/manage/$slug'
+      fullPath: '/manage/$slug'
+      preLoaderRoute: typeof ManageSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stalls/$id': {
       id: '/stalls/$id'
       path: '/stalls/$id'
@@ -265,6 +285,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   ListingIdRoute: ListingIdRoute,
   MSlugRoute: MSlugRoute,
+  ManageSlugRoute: ManageSlugRoute,
   StallsIdRoute: StallsIdRoute,
   VSlugRoute: VSlugRoute,
 }

@@ -20,6 +20,7 @@ describe("Marketplace public profiles", () => {
   it.each([
     ["/m/lantern-row", "/m/$slug"],
     ["/v/maple-bakery", "/v/$slug"],
+    ["/manage/lantern-row", "/manage/$slug"],
   ])("matches %s", (path, routeId) => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
     expect(router.matchRoutes(path).at(-1)?.routeId).toBe(routeId);

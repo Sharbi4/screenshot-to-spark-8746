@@ -8,6 +8,7 @@ import { Amenities } from "@/components/Amenities";
 import { LocationCard } from "@/components/LocationCard";
 import { VendorDirectory, VendorLogo } from "@/components/VendorDirectory";
 import { ShareButton } from "@/components/ShareButton";
+import { ManageMarketInvite } from "@/components/ManageMarketInvite";
 
 export const Route = createFileRoute("/m/$slug")({
   loader: async ({ params }) => {
@@ -184,6 +185,8 @@ function MarketProfilePage() {
             </ul>
           </section>
         )}
+
+        {!m.claimed && <div className="mt-12"><ManageMarketInvite slug={m.slug} /></div>}
 
         {m.provenance && (
           <p className="mt-10 text-xs text-muted-foreground">
