@@ -4,6 +4,8 @@ import { Star, ArrowRight, Navigation } from "lucide-react";
 import { useState } from "react";
 import { markets, type Market } from "@/lib/markets";
 import { Gallery } from "@/components/Gallery";
+import { MapboxDiscovery } from "@/components/MapboxDiscovery";
+import { getMapConfig } from "@/lib/map.functions";
 
 export const Route = createFileRoute("/map")({
   head: () => ({
@@ -16,8 +18,15 @@ export const Route = createFileRoute("/map")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: MapView,
+  loader: () => getMapConfig(),
+  component: MapRoute,
 });
+
+// Mapbox when a public token is configured; otherwise the original stylised prototype map.
+function MapRoute() {
+  const { token } = Route.useLoaderData();
+  return token ? <MapboxDiscovery token={token} /> : <MapView />;
+}
 
 function MapView() {
   const [sel, setSel] = useState<Market | null>(null);
