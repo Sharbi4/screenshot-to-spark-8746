@@ -4,3 +4,5 @@
 - [ ] Save account-owned booking requests from market and stall details.
 - [ ] Show saved requests and AI summaries in Studio.
 - [ ] Verify refresh persistence and private access.
+- [ ] Check payment eligibility and confirm the payment setup.
+- [ ] Enable payments and configure customer checkout after approval and pricing details.
