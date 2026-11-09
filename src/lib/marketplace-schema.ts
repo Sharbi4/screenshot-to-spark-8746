@@ -20,7 +20,7 @@ export function slugify(value: string) {
     .replace(/-+$/g, "");
 }
 
-export const marketKinds = ["farmers", "night", "flea", "artisan", "craft", "festival", "popup", "food_truck", "community"] as const;
+export const marketKinds = ["farmers", "night", "flea", "artisan", "craft", "festival", "popup", "food_truck", "community", "public", "holiday"] as const;
 export type MarketKind = (typeof marketKinds)[number];
 
 export const marketKindLabel: Record<MarketKind, string> = {
@@ -33,6 +33,8 @@ export const marketKindLabel: Record<MarketKind, string> = {
   popup: "Pop-up market",
   food_truck: "Food truck market",
   community: "Community market",
+  public: "Public market",
+  holiday: "Holiday market",
 };
 
 const httpsUrl = z

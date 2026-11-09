@@ -73,6 +73,33 @@ export type Database = {
           },
         ]
       }
+      directory_import_runs: {
+        Row: {
+          created_at: string
+          dataset: string
+          dataset_sha256: string
+          id: string
+          mode: string
+          summary: Json
+        }
+        Insert: {
+          created_at?: string
+          dataset: string
+          dataset_sha256: string
+          id?: string
+          mode: string
+          summary: Json
+        }
+        Update: {
+          created_at?: string
+          dataset?: string
+          dataset_sha256?: string
+          id?: string
+          mode?: string
+          summary?: Json
+        }
+        Relationships: []
+      }
       market_appearances: {
         Row: {
           appearance_date: string
@@ -180,8 +207,170 @@ export type Database = {
           },
         ]
       }
+      market_photos: {
+        Row: {
+          alt_text: string
+          attribution: string
+          id: string
+          image_url: string
+          is_cover: boolean
+          license: string
+          market_id: string
+          owner_name: string
+          permission_note: string
+          source_url: string | null
+          status: string
+          storage_path: string
+          uploaded_at: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          alt_text?: string
+          attribution?: string
+          id?: string
+          image_url: string
+          is_cover?: boolean
+          license: string
+          market_id: string
+          owner_name?: string
+          permission_note?: string
+          source_url?: string | null
+          status?: string
+          storage_path?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          alt_text?: string
+          attribution?: string
+          id?: string
+          image_url?: string
+          is_cover?: boolean
+          license?: string
+          market_id?: string
+          owner_name?: string
+          permission_note?: string
+          source_url?: string | null
+          status?: string
+          storage_path?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_photos_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      market_review_flags: {
+        Row: {
+          created_at: string
+          external_id: string
+          field: string
+          id: string
+          market_id: string | null
+          message: string
+          resolved_at: string | null
+          severity: string
+        }
+        Insert: {
+          created_at?: string
+          external_id: string
+          field: string
+          id?: string
+          market_id?: string | null
+          message: string
+          resolved_at?: string | null
+          severity: string
+        }
+        Update: {
+          created_at?: string
+          external_id?: string
+          field?: string
+          id?: string
+          market_id?: string | null
+          message?: string
+          resolved_at?: string | null
+          severity?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_review_flags_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      market_sources: {
+        Row: {
+          fields: string[]
+          id: string
+          market_id: string
+          notes: string
+          retrieved_on: string
+          source_type: string
+          url: string
+        }
+        Insert: {
+          fields?: string[]
+          id?: string
+          market_id: string
+          notes?: string
+          retrieved_on: string
+          source_type: string
+          url: string
+        }
+        Update: {
+          fields?: string[]
+          id?: string
+          market_id?: string
+          notes?: string
+          retrieved_on?: string
+          source_type?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_sources_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       markets: {
         Row: {
+          external_id: string | null
+          state: string
+          postal_code: string
+          time_zone: string
+          venue_name: string
+          organizer_name: string
+          contact_email: string
+          contact_phone: string
+          social_links: Json
+          schedule_rules: Json
+          season_note: string
+          upcoming_dates: string[]
+          vendor_applications: string
+          vendor_application_url: string | null
+          vendor_types: string[]
+          vendor_requirements: string
+          booth_price_note: string
+          amenities: string[]
+          geocode_source: string
+          location_status: string
+          review_status: string
+          confidence: string
+          booking_enabled: boolean
+          last_verified_at: string | null
           address: string
           city: string
           claim_status: string
@@ -208,6 +397,30 @@ export type Database = {
           website_url: string | null
         }
         Insert: {
+          external_id?: string | null
+          state?: string
+          postal_code?: string
+          time_zone?: string
+          venue_name?: string
+          organizer_name?: string
+          contact_email?: string
+          contact_phone?: string
+          social_links?: Json
+          schedule_rules?: Json
+          season_note?: string
+          upcoming_dates?: string[]
+          vendor_applications?: string
+          vendor_application_url?: string | null
+          vendor_types?: string[]
+          vendor_requirements?: string
+          booth_price_note?: string
+          amenities?: string[]
+          geocode_source?: string
+          location_status?: string
+          review_status?: string
+          confidence?: string
+          booking_enabled?: boolean
+          last_verified_at?: string | null
           address?: string
           city: string
           claim_status?: string
@@ -234,6 +447,30 @@ export type Database = {
           website_url?: string | null
         }
         Update: {
+          external_id?: string | null
+          state?: string
+          postal_code?: string
+          time_zone?: string
+          venue_name?: string
+          organizer_name?: string
+          contact_email?: string
+          contact_phone?: string
+          social_links?: Json
+          schedule_rules?: Json
+          season_note?: string
+          upcoming_dates?: string[]
+          vendor_applications?: string
+          vendor_application_url?: string | null
+          vendor_types?: string[]
+          vendor_requirements?: string
+          booth_price_note?: string
+          amenities?: string[]
+          geocode_source?: string
+          location_status?: string
+          review_status?: string
+          confidence?: string
+          booking_enabled?: boolean
+          last_verified_at?: string | null
           address?: string
           city?: string
           claim_status?: string
@@ -459,6 +696,22 @@ export type Database = {
       approve_market_claim: {
         Args: { p_claim_id: string; p_notes?: string }
         Returns: undefined
+      }
+      map_listings: {
+        Args: { min_lng: number; min_lat: number; max_lng: number; max_lat: number; max_rows?: number }
+        Returns: {
+          listing_type: string
+          slug: string
+          name: string
+          kind: string
+          city: string
+          state: string
+          latitude: number
+          longitude: number
+          cover_image_url: string | null
+          bookable: boolean
+          from_price: number | null
+        }[]
       }
     }
     Enums: {

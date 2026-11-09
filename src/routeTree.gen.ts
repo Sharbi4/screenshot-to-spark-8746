@@ -19,8 +19,11 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ListingIdRouteImport } from './routes/listing.$id'
 import { Route as MSlugRouteImport } from './routes/m.$slug'
 import { Route as ManageSlugRouteImport } from './routes/manage.$slug'
+import { Route as MarketsIndexRouteImport } from './routes/markets.index'
 import { Route as StallsIdRouteImport } from './routes/stalls.$id'
 import { Route as VSlugRouteImport } from './routes/v.$slug'
+import { Route as MarketsStateIndexRouteImport } from './routes/markets.$state.index'
+import { Route as MarketsStateCityRouteImport } from './routes/markets.$state.$city'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -72,6 +75,11 @@ const ManageSlugRoute = ManageSlugRouteImport.update({
   path: '/manage/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketsIndexRoute = MarketsIndexRouteImport.update({
+  id: '/markets/',
+  path: '/markets/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StallsIdRoute = StallsIdRouteImport.update({
   id: '/stalls/$id',
   path: '/stalls/$id',
@@ -80,6 +88,16 @@ const StallsIdRoute = StallsIdRouteImport.update({
 const VSlugRoute = VSlugRouteImport.update({
   id: '/v/$slug',
   path: '/v/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketsStateIndexRoute = MarketsStateIndexRouteImport.update({
+  id: '/markets/$state/',
+  path: '/markets/$state/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketsStateCityRoute = MarketsStateCityRouteImport.update({
+  id: '/markets/$state/$city',
+  path: '/markets/$state/$city',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -96,6 +114,9 @@ export interface FileRoutesByFullPath {
   '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
   '/v/$slug': typeof VSlugRoute
+  '/markets/': typeof MarketsIndexRoute
+  '/markets/$state/$city': typeof MarketsStateCityRoute
+  '/markets/$state/': typeof MarketsStateIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +131,9 @@ export interface FileRoutesByTo {
   '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
   '/v/$slug': typeof VSlugRoute
+  '/markets': typeof MarketsIndexRoute
+  '/markets/$state/$city': typeof MarketsStateCityRoute
+  '/markets/$state': typeof MarketsStateIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +149,9 @@ export interface FileRoutesById {
   '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
   '/v/$slug': typeof VSlugRoute
+  '/markets/': typeof MarketsIndexRoute
+  '/markets/$state/$city': typeof MarketsStateCityRoute
+  '/markets/$state/': typeof MarketsStateIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +168,9 @@ export interface FileRouteTypes {
     | '/manage/$slug'
     | '/stalls/$id'
     | '/v/$slug'
+    | '/markets/'
+    | '/markets/$state/$city'
+    | '/markets/$state/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +185,9 @@ export interface FileRouteTypes {
     | '/manage/$slug'
     | '/stalls/$id'
     | '/v/$slug'
+    | '/markets'
+    | '/markets/$state/$city'
+    | '/markets/$state'
   id:
     | '__root__'
     | '/'
@@ -169,6 +202,9 @@ export interface FileRouteTypes {
     | '/manage/$slug'
     | '/stalls/$id'
     | '/v/$slug'
+    | '/markets/'
+    | '/markets/$state/$city'
+    | '/markets/$state/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +220,9 @@ export interface RootRouteChildren {
   ManageSlugRoute: typeof ManageSlugRoute
   StallsIdRoute: typeof StallsIdRoute
   VSlugRoute: typeof VSlugRoute
+  MarketsIndexRoute: typeof MarketsIndexRoute
+  MarketsStateCityRoute: typeof MarketsStateCityRoute
+  MarketsStateIndexRoute: typeof MarketsStateIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -258,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ManageSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/markets/': {
+      id: '/markets/'
+      path: '/markets'
+      fullPath: '/markets/'
+      preLoaderRoute: typeof MarketsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stalls/$id': {
       id: '/stalls/$id'
       path: '/stalls/$id'
@@ -270,6 +316,20 @@ declare module '@tanstack/react-router' {
       path: '/v/$slug'
       fullPath: '/v/$slug'
       preLoaderRoute: typeof VSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/markets/$state/': {
+      id: '/markets/$state/'
+      path: '/markets/$state'
+      fullPath: '/markets/$state/'
+      preLoaderRoute: typeof MarketsStateIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/markets/$state/$city': {
+      id: '/markets/$state/$city'
+      path: '/markets/$state/$city'
+      fullPath: '/markets/$state/$city'
+      preLoaderRoute: typeof MarketsStateCityRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -288,6 +348,9 @@ const rootRouteChildren: RootRouteChildren = {
   ManageSlugRoute: ManageSlugRoute,
   StallsIdRoute: StallsIdRoute,
   VSlugRoute: VSlugRoute,
+  MarketsIndexRoute: MarketsIndexRoute,
+  MarketsStateCityRoute: MarketsStateCityRoute,
+  MarketsStateIndexRoute: MarketsStateIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

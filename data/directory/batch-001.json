@@ -1,0 +1,1086 @@
+{
+  "batch": "batch-001",
+  "researched_on": "2026-11-09",
+  "method": "Official websites only; robots.txt honoured; facts only, descriptions paraphrased.",
+  "records": [
+    {
+      "description": "The Dane County Farmers' Market's flagship Saturday market, held on Madison's Capitol Square from spring through mid-November.",
+      "organizer_name": "Dane County Farmers' Market",
+      "website_url": "https://dcfm.org/markets/saturday-on-the-square",
+      "contact_email": "",
+      "contact_phone": "",
+      "social_links": {},
+      "venue_name": "Capitol Square",
+      "address": "Capitol Square",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sat"
+          ],
+          "opens": "06:15",
+          "closes": "13:45",
+          "starts_on": "2026-04-11",
+          "ends_on": "2026-11-14",
+          "note": "Closed at 1:00 PM on Sept 5, 2026."
+        }
+      ],
+      "season_note": "Saturdays, April 11 – November 14, 2026.",
+      "upcoming_dates": [
+        "2026-11-14"
+      ],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": [
+          "Venue is the Capitol Square; no street number or ZIP is published, so the location needs manual pin placement."
+        ]
+      },
+      "external_id": "us-wi-madison-dcfm-saturday-on-the-square",
+      "name": "Dane County Farmers' Market: Saturday on the Square",
+      "kind": "farmers",
+      "city": "Madison",
+      "state": "WI",
+      "time_zone": "America/Chicago",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://dcfm.org/markets/saturday-on-the-square",
+          "fields": [
+            "name",
+            "schedule",
+            "season",
+            "venue"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "A midweek edition of the Dane County Farmers' Market on the 200 block of Martin Luther King Jr. Blvd. in downtown Madison.",
+      "organizer_name": "Dane County Farmers' Market",
+      "website_url": "https://dcfm.org/markets/wednesday-market",
+      "contact_email": "",
+      "contact_phone": "",
+      "social_links": {},
+      "venue_name": "",
+      "address": "200 Martin Luther King Jr Blvd",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "wed"
+          ],
+          "opens": "08:30",
+          "closes": "13:15",
+          "starts_on": "2026-04-22",
+          "ends_on": "2026-11-04",
+          "note": "Info booth open until 1:00 PM."
+        }
+      ],
+      "season_note": "Wednesdays, April 22 – November 4, 2026. Out of season until next spring.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "medium",
+        "notes": [
+          "Address is a block, not a street number; geocoded point is approximate."
+        ]
+      },
+      "external_id": "us-wi-madison-dcfm-wednesday",
+      "name": "Dane County Farmers' Market: Wednesday Market",
+      "kind": "farmers",
+      "city": "Madison",
+      "state": "WI",
+      "time_zone": "America/Chicago",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://dcfm.org/markets/wednesday-market",
+          "fields": [
+            "name",
+            "schedule",
+            "season",
+            "address"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": "Published as '200 Block Martin Luther King, Jr. Blvd.'"
+        }
+      ]
+    },
+    {
+      "description": "The Dane County Farmers' Market's indoor holiday edition at Monona Terrace on selected Saturdays in November and December.",
+      "organizer_name": "Dane County Farmers' Market",
+      "website_url": "https://dcfm.org/markets/holiday-market",
+      "contact_email": "",
+      "contact_phone": "",
+      "social_links": {},
+      "venue_name": "Monona Terrace Community & Convention Center",
+      "address": "1 John Nolen Drive",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sat"
+          ],
+          "opens": "07:30",
+          "closes": "12:00",
+          "starts_on": "2026-11-21",
+          "ends_on": "2026-12-19",
+          "note": "Open until 1:00 PM on Dec 5. Closed Nov 28 and Dec 26."
+        }
+      ],
+      "season_note": "Saturdays: Nov 21, Dec 5, Dec 12 and Dec 19, 2026.",
+      "upcoming_dates": [
+        "2026-11-21",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19"
+      ],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": []
+      },
+      "external_id": "us-wi-madison-dcfm-holiday",
+      "name": "Dane County Farmers' Market: Holiday Market",
+      "kind": "holiday",
+      "city": "Madison",
+      "state": "WI",
+      "time_zone": "America/Chicago",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://dcfm.org/markets/holiday-market",
+          "fields": [
+            "name",
+            "schedule",
+            "dates",
+            "venue",
+            "address"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "Crescent City Farmers Market's Tuesday morning market at The Batture in Uptown New Orleans.",
+      "organizer_name": "Market Umbrella",
+      "website_url": "https://crescentcityfarmersmarket.org/",
+      "contact_email": "",
+      "contact_phone": "504-861-4485",
+      "social_links": {},
+      "venue_name": "The Batture",
+      "address": "25 Walnut Street",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "tue"
+          ],
+          "opens": "08:00",
+          "closes": "12:00"
+        }
+      ],
+      "season_note": "Weekly.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": []
+      },
+      "external_id": "us-la-new-orleans-crescent-city-uptown-tuesday",
+      "name": "Crescent City Farmers Market: Uptown Tuesday Market",
+      "kind": "farmers",
+      "city": "New Orleans",
+      "state": "LA",
+      "time_zone": "America/Chicago",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://crescentcityfarmersmarket.org/",
+          "fields": [
+            "name",
+            "schedule",
+            "venue",
+            "address",
+            "organizer",
+            "phone"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "Crescent City Farmers Market's Thursday afternoon market on the Lafitte Greenway Plaza at the Bayou.",
+      "organizer_name": "Market Umbrella",
+      "website_url": "https://crescentcityfarmersmarket.org/",
+      "contact_email": "",
+      "contact_phone": "504-861-4485",
+      "social_links": {},
+      "venue_name": "Lafitte Greenway Plaza",
+      "address": "500 N. Norman C. Francis Parkway",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "thu"
+          ],
+          "opens": "15:00",
+          "closes": "19:00"
+        }
+      ],
+      "season_note": "Weekly.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": []
+      },
+      "external_id": "us-la-new-orleans-crescent-city-mid-city-thursday",
+      "name": "Crescent City Farmers Market: Mid-City Thursday Market",
+      "kind": "farmers",
+      "city": "New Orleans",
+      "state": "LA",
+      "time_zone": "America/Chicago",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://crescentcityfarmersmarket.org/",
+          "fields": [
+            "name",
+            "schedule",
+            "venue",
+            "address",
+            "organizer",
+            "phone"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "Crescent City Farmers Market's Sunday morning market in New Orleans City Park.",
+      "organizer_name": "Market Umbrella",
+      "website_url": "https://crescentcityfarmersmarket.org/",
+      "contact_email": "",
+      "contact_phone": "504-861-4485",
+      "social_links": {},
+      "venue_name": "City Putt Parking Lot",
+      "address": "33 Dreyfous Drive",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sun"
+          ],
+          "opens": "08:00",
+          "closes": "12:00"
+        }
+      ],
+      "season_note": "Weekly.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": []
+      },
+      "external_id": "us-la-new-orleans-crescent-city-city-park-sunday",
+      "name": "Crescent City Farmers Market: City Park Sunday Market",
+      "kind": "farmers",
+      "city": "New Orleans",
+      "state": "LA",
+      "time_zone": "America/Chicago",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://crescentcityfarmersmarket.org/",
+          "fields": [
+            "name",
+            "schedule",
+            "venue",
+            "address",
+            "organizer",
+            "phone"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "Portland Farmers Market's year-round Saturday market in the South Park Blocks on the Portland State University campus, with up to about 100 vendor stalls in summer.",
+      "organizer_name": "Portland Farmers Market",
+      "website_url": "https://www.portlandfarmersmarket.org/our-markets/psu/",
+      "contact_email": "",
+      "contact_phone": "503-241-0032",
+      "social_links": {},
+      "venue_name": "South Park Blocks, Portland State University",
+      "address": "1803 SW Park Ave",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Winter hours",
+          "days": [
+            "sat"
+          ],
+          "opens": "09:00",
+          "closes": "14:00",
+          "starts_on": "2026-11-07",
+          "ends_on": "2027-03-31",
+          "note": "Closed December 26, 2026."
+        },
+        {
+          "label": "Spring–fall hours",
+          "days": [
+            "sat"
+          ],
+          "opens": "08:30",
+          "closes": "14:00",
+          "starts_on": "2027-04-01"
+        }
+      ],
+      "season_note": "Year-round on Saturdays.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": "https://www.portlandfarmersmarket.org/become-a-vendor/",
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": []
+      },
+      "external_id": "us-or-portland-psu-farmers-market",
+      "name": "Portland Farmers Market at PSU",
+      "kind": "farmers",
+      "city": "Portland",
+      "state": "OR",
+      "time_zone": "America/Los_Angeles",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://www.portlandfarmersmarket.org/our-markets/psu/",
+          "fields": [
+            "name",
+            "schedule",
+            "season",
+            "address",
+            "vendor_application_url",
+            "phone"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": "Site lists 1803 SW Park Ave as the closest address; market sits between SW College & Montgomery Streets."
+        }
+      ]
+    },
+    {
+      "description": "A year-round public market in Cincinnati with more than 50 full-time merchants selling meat, fish, produce, flowers, cheese and more, plus a weekend farmers market.",
+      "organizer_name": "Corporation for Findlay Market",
+      "website_url": "https://www.findlaymarket.org/",
+      "contact_email": "info@findlaymarket.org",
+      "contact_phone": "",
+      "social_links": {
+        "facebook": "https://www.facebook.com/findlaymarket/",
+        "instagram": "https://www.instagram.com/findlaymarket/"
+      },
+      "venue_name": "",
+      "address": "1801 Race Street",
+      "postal_code": "45202",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market hall",
+          "days": [
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        {
+          "label": "Market hall",
+          "days": [
+            "sat"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "label": "Market hall",
+          "days": [
+            "sun"
+          ],
+          "opens": "10:00",
+          "closes": "16:00"
+        },
+        {
+          "label": "Farmers market",
+          "days": [
+            "sat"
+          ],
+          "opens": "08:00",
+          "closes": "14:00"
+        },
+        {
+          "label": "Farmers market",
+          "days": [
+            "sun"
+          ],
+          "opens": "10:00",
+          "closes": "14:00"
+        }
+      ],
+      "season_note": "Open Tuesday–Sunday year-round. Closed Mondays.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": []
+      },
+      "external_id": "us-oh-cincinnati-findlay-market",
+      "name": "Findlay Market",
+      "kind": "public",
+      "city": "Cincinnati",
+      "state": "OH",
+      "time_zone": "America/New_York",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://www.findlaymarket.org/",
+          "fields": [
+            "name",
+            "schedule",
+            "address",
+            "email",
+            "social_links",
+            "organizer"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "A seasonal Saturday-night open-air market in Flushing Meadows Corona Park, known for food and performances celebrating the cultural diversity of Queens.",
+      "organizer_name": "Queens Night Market",
+      "website_url": "https://queensnightmarket.com/",
+      "contact_email": "",
+      "contact_phone": "",
+      "social_links": {},
+      "venue_name": "Flushing Meadows Corona Park (behind the New York Hall of Science)",
+      "address": "",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sat"
+          ],
+          "opens": "16:00",
+          "closes": "24:00",
+          "note": "Seasonal."
+        }
+      ],
+      "season_note": "The 2026 season has ended; the market says it returns in 2027.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": "https://queensnightmarket.com/vendors",
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "medium",
+        "notes": [
+          "No street address published (venue described as behind the New York Hall of Science); pin needs manual placement.",
+          "Out of season — 2027 dates not yet published."
+        ]
+      },
+      "external_id": "us-ny-queens-queens-night-market",
+      "name": "Queens Night Market",
+      "kind": "night",
+      "city": "Queens",
+      "state": "NY",
+      "time_zone": "America/New_York",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://queensnightmarket.com/",
+          "fields": [
+            "name",
+            "schedule",
+            "season",
+            "venue",
+            "vendor_application_url"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "A weekend vintage and flea market at the Dumbo Archway in Brooklyn.",
+      "organizer_name": "Brooklyn Flea",
+      "website_url": "https://www.brooklynflea.com/",
+      "contact_email": "",
+      "contact_phone": "",
+      "social_links": {},
+      "venue_name": "Dumbo Archway",
+      "address": "80 Pearl Street",
+      "postal_code": "11201",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "opens": "10:00",
+          "closes": "17:00",
+          "ends_on": "2026-12-21"
+        }
+      ],
+      "season_note": "Saturdays and Sundays through December 21, 2026.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": []
+      },
+      "external_id": "us-ny-brooklyn-brooklyn-flea-dumbo",
+      "name": "Brooklyn Flea (DUMBO)",
+      "kind": "flea",
+      "city": "Brooklyn",
+      "state": "NY",
+      "time_zone": "America/New_York",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://www.brooklynflea.com/",
+          "fields": [
+            "name",
+            "schedule",
+            "season",
+            "venue",
+            "address"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "A year-round weekend vintage flea market in Manhattan, operated by Brooklyn Flea.",
+      "organizer_name": "Brooklyn Flea",
+      "website_url": "https://www.brooklynflea.com/",
+      "contact_email": "",
+      "contact_phone": "",
+      "social_links": {},
+      "venue_name": "",
+      "address": "29 W 25th Street",
+      "postal_code": "10010",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "opens": "08:00",
+          "closes": "17:00",
+          "note": "Rain or shine unless noted by the organizer."
+        }
+      ],
+      "season_note": "Year-round on weekends.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": []
+      },
+      "external_id": "us-ny-new-york-chelsea-flea",
+      "name": "Chelsea Flea",
+      "kind": "flea",
+      "city": "New York",
+      "state": "NY",
+      "time_zone": "America/New_York",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://www.brooklynflea.com/",
+          "fields": [
+            "name",
+            "schedule",
+            "address"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "Santa Fe's farmers market, open Saturdays all year with a seasonal Tuesday market.",
+      "organizer_name": "Santa Fe Farmers' Market",
+      "website_url": "https://santafefarmersmarket.com/",
+      "contact_email": "info@santafefarmersmarket.com",
+      "contact_phone": "505-983-4098",
+      "social_links": {},
+      "venue_name": "",
+      "address": "1607 Paseo de Peralta",
+      "postal_code": "87501",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Saturday market",
+          "days": [
+            "sat"
+          ],
+          "opens": "08:00",
+          "closes": "13:00"
+        },
+        {
+          "label": "Tuesday market",
+          "days": [
+            "tue"
+          ],
+          "opens": "08:00",
+          "closes": "13:00",
+          "starts_on": "2026-05-05",
+          "ends_on": "2026-12-22"
+        }
+      ],
+      "season_note": "Saturdays year-round; Tuesdays May 5 – December 22, 2026.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": "https://santafefarmersmarket.com/for-members/vendor-info-page/",
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "medium",
+        "notes": [
+          "Street address is the published contact address; confirm it matches the market pavilion entrance."
+        ]
+      },
+      "external_id": "us-nm-santa-fe-santa-fe-farmers-market",
+      "name": "Santa Fe Farmers' Market",
+      "kind": "farmers",
+      "city": "Santa Fe",
+      "state": "NM",
+      "time_zone": "America/Denver",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://santafefarmersmarket.com/",
+          "fields": [
+            "name",
+            "schedule",
+            "season",
+            "address",
+            "email",
+            "phone",
+            "vendor_application_url"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": "Address published as the market's contact address (Suite A)."
+        }
+      ]
+    },
+    {
+      "description": "A Sunday artisan market held in the Santa Fe Farmers' Market Pavilion in the Railyard.",
+      "organizer_name": "Santa Fe Farmers' Market",
+      "website_url": "https://santafefarmersmarket.com/",
+      "contact_email": "",
+      "contact_phone": "",
+      "social_links": {},
+      "venue_name": "Santa Fe Farmers' Market Pavilion",
+      "address": "1607 Paseo de Peralta",
+      "postal_code": "87501",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sun"
+          ],
+          "opens": "10:00",
+          "closes": "15:00"
+        }
+      ],
+      "season_note": "Sundays.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "medium",
+        "notes": [
+          "Shares the Farmers' Market Pavilion address; confirm operator details with the organizer."
+        ]
+      },
+      "external_id": "us-nm-santa-fe-railyard-artisan-market",
+      "name": "Railyard Artisan Market",
+      "kind": "artisan",
+      "city": "Santa Fe",
+      "state": "NM",
+      "time_zone": "America/Denver",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://santafefarmersmarket.com/",
+          "fields": [
+            "name",
+            "schedule",
+            "venue"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "description": "An indoor public market at 100 Hanover Street, open daily, with vendors selling prepared food, drinks, groceries and goods.",
+      "organizer_name": "",
+      "website_url": "https://bostonpublicmarket.org/",
+      "contact_email": "",
+      "contact_phone": "617-973-4909",
+      "social_links": {},
+      "venue_name": "",
+      "address": "100 Hanover Street",
+      "postal_code": "02108",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sun",
+            "mon",
+            "tue"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "label": "Market",
+          "days": [
+            "wed",
+            "thu",
+            "fri",
+            "sat"
+          ],
+          "opens": "08:00",
+          "closes": "20:00",
+          "note": "Some vendor hours vary."
+        }
+      ],
+      "season_note": "Open daily, year-round.",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": null,
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "high",
+        "notes": [
+          "Organizer legal name not published on the page; left blank until confirmed."
+        ]
+      },
+      "external_id": "us-ma-boston-boston-public-market",
+      "name": "Boston Public Market",
+      "kind": "public",
+      "city": "Boston",
+      "state": "MA",
+      "time_zone": "America/New_York",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://bostonpublicmarket.org/",
+          "fields": [
+            "name",
+            "schedule",
+            "address",
+            "phone"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": "Site footer identifies a registered 501(c)(3); organizer legal name not shown verbatim."
+        }
+      ]
+    },
+    {
+      "description": "A farmers market at 312 East Lyndale Avenue North in Minneapolis.",
+      "organizer_name": "Minneapolis Farmers Market",
+      "website_url": "https://www.mplsfarmersmarket.com/",
+      "contact_email": "",
+      "contact_phone": "",
+      "social_links": {},
+      "venue_name": "",
+      "address": "312 E Lyndale Ave N",
+      "postal_code": "55405",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [],
+      "season_note": "",
+      "upcoming_dates": [],
+      "vendor_applications": "unknown",
+      "vendor_application_url": "https://www.mplsfarmersmarket.com/vendor-inquiry-form",
+      "vendor_types": [],
+      "vendor_requirements": "",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "needs_review",
+        "confidence": "medium",
+        "notes": [
+          "Operating schedule not verified — confirm hours and season manually before publishing."
+        ]
+      },
+      "external_id": "us-mn-minneapolis-minneapolis-farmers-market",
+      "name": "Minneapolis Farmers Market",
+      "kind": "farmers",
+      "city": "Minneapolis",
+      "state": "MN",
+      "time_zone": "America/Chicago",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://www.mplsfarmersmarket.com/",
+          "fields": [
+            "name",
+            "address",
+            "vendor_application_url"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": "Schedule page renders client-side; hours could not be verified automatically."
+        }
+      ]
+    },
+    {
+      "description": "A large monthly outdoor flea market at the Rose Bowl in Pasadena, held on the second Sunday of each month, rain or shine.",
+      "organizer_name": "R.G. Canning Enterprises (RGCShows)",
+      "website_url": "https://www.rgcshows.com/rose-bowl/",
+      "contact_email": "",
+      "contact_phone": "323-560-7469",
+      "social_links": {},
+      "venue_name": "Rose Bowl",
+      "address": "1001 Rose Bowl Dr",
+      "postal_code": "91103",
+      "latitude": null,
+      "longitude": null,
+      "schedule_rules": [
+        {
+          "label": "Market",
+          "days": [
+            "sun"
+          ],
+          "opens": null,
+          "closes": null,
+          "note": "Second Sunday of each month. Rain or shine."
+        }
+      ],
+      "season_note": "Monthly, year-round.",
+      "upcoming_dates": [],
+      "vendor_applications": "open",
+      "vendor_application_url": "https://www.rgcshows.com/rose-bowl/",
+      "vendor_types": [],
+      "vendor_requirements": "Sellers must hold a California resale permit listing the Rose Bowl Flea Market address, except where the organizer's exemptions apply.",
+      "booth_price_note": "",
+      "amenities": [],
+      "photo": {
+        "status": "none",
+        "note": "No licensed photo yet. Placeholder shown until the organizer provides one."
+      },
+      "verification": {
+        "status": "verified",
+        "confidence": "medium",
+        "notes": [
+          "General admission hours not captured — show 'check website for hours'."
+        ]
+      },
+      "external_id": "us-ca-pasadena-rose-bowl-flea-market",
+      "name": "Rose Bowl Flea Market",
+      "kind": "flea",
+      "city": "Pasadena",
+      "state": "CA",
+      "time_zone": "America/Los_Angeles",
+      "sources": [
+        {
+          "source_type": "official_website",
+          "url": "https://www.rgcshows.com/rose-bowl/",
+          "fields": [
+            "name",
+            "schedule",
+            "address",
+            "vendor_applications",
+            "vendor_requirements",
+            "phone"
+          ],
+          "retrieved_on": "2026-11-09",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

@@ -22,6 +22,13 @@
       "when": 1794211200000,
       "tag": "0002_marketplace_core",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794297600000,
+      "tag": "0003_national_directory",
+      "breakpoints": true
     }
   ]
 }
