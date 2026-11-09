@@ -9,12 +9,14 @@ import { LocationCard } from "@/components/LocationCard";
 import { VendorDirectory, VendorLogo } from "@/components/VendorDirectory";
 import { ShareButton } from "@/components/ShareButton";
 import { ManageMarketInvite } from "@/components/ManageMarketInvite";
+import { ScheduleCard, ContactLinks, VendorInfo, SourcesNote, PlaceLinks } from "@/components/DirectorySections";
+import { getMapConfig } from "@/lib/map.functions";
 
 export const Route = createFileRoute("/m/$slug")({
   loader: async ({ params }) => {
-    const profile = await getMarketProfile({ data: { slug: params.slug } });
+    const [profile, config] = await Promise.all([getMarketProfile({ data: { slug: params.slug } }), getMapConfig().catch(() => ({ token: "" }))]);
     if (!profile) throw notFound();
-    return profile;
+    return { ...profile, mapToken: config.token };
   },
   head: ({ loaderData: m }) => {
     if (!m) return { meta: [{ title: `Market not found — ${BRAND}` }, { name: "robots", content: "noindex" }] };
@@ -48,6 +50,7 @@ export const Route = createFileRoute("/m/$slug")({
 function MarketProfilePage() {
   const m = Route.useLoaderData();
   const router = useRouter();
+  const d = m.directory;
   const featured = m.vendors.filter((a) => a.featured && a.vendor.products.length).slice(0, 6);
 
   return (
@@ -79,7 +82,8 @@ function MarketProfilePage() {
         transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 26 }}
         className="relative z-10 mx-auto -mt-6 max-w-3xl rounded-t-3xl bg-background px-5 pt-7 md:mt-0"
       >
-        <p className="eyebrow text-sage">{m.kindLabel} · {m.city}</p>
+        {d?.state ? <PlaceLinks state={d.state} city={m.city} /> : null}
+        <p className={`eyebrow text-sage ${d?.state ? "mt-2" : ""}`}>{m.kindLabel} · {m.city}{d?.state ? `, ${d.state}` : ""}</p>
         <h1 className="display mt-2 text-4xl md:text-5xl">{m.name}</h1>
         <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
           {m.schedule && <span className="flex items-center gap-1.5"><CalendarDays className="h-4 w-4" />{m.schedule}</span>}
@@ -108,8 +112,16 @@ function MarketProfilePage() {
           </>
         )}
 
+        {d && (
+          <>
+            <h2 className="eyebrow mt-9 text-muted-foreground">Hours &amp; season</h2>
+            <div className="mt-3"><ScheduleCard d={d} /></div>
+            <div className="mt-4"><ContactLinks d={d} websiteUrl={m.websiteUrl} /></div>
+          </>
+        )}
+
         <h2 className="eyebrow mt-9 text-muted-foreground">Location</h2>
-        <div className="mt-3"><LocationCard name={m.name} address={m.address} city={m.city} pin={m.pin} /></div>
+        <div className="mt-3"><LocationCard name={d?.venueName ? `${m.name} · ${d.venueName}` : m.name} address={m.address} city={d?.state ? `${m.city}, ${d.state}${d.postalCode ? ` ${d.postalCode}` : ""}` : m.city} pin={m.pin} coords={d?.coords ?? null} mapToken={m.mapToken} mapSlug={m.slug} /></div>
 
         {featured.length > 0 && (
           <section className="mt-10">
@@ -139,7 +151,9 @@ function MarketProfilePage() {
         <section className="mt-10">
           <p className="eyebrow text-muted-foreground">For vendors</p>
           <h2 className="mt-1 text-2xl font-semibold tracking-tight">Booking information</h2>
-          {m.boothTypes.length > 0 ? (
+          {d && m.boothTypes.length === 0 ? (
+            <div className="mt-4"><VendorInfo d={d} claimed={m.claimed} /></div>
+          ) : m.boothTypes.length > 0 ? (
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
               {m.boothTypes.map((b) => (
                 <li key={b.id}>
@@ -188,7 +202,9 @@ function MarketProfilePage() {
 
         {!m.claimed && <div className="mt-12"><ManageMarketInvite slug={m.slug} /></div>}
 
-        {m.provenance && (
+        {d && (d.sources.length > 0 || d.lastVerified) ? (
+          <div className="mt-10"><SourcesNote d={d} organizer={d.organizerName} /></div>
+        ) : m.provenance && (
           <p className="mt-10 text-xs text-muted-foreground">
             Listing information from{" "}
             {m.provenance.url ? <a href={m.provenance.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">{m.provenance.name}</a> : m.provenance.name}

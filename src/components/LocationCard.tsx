@@ -60,7 +60,7 @@ export function LocationCard({ name, address, city, pin, coords = null, mapToken
         </span>
         <span className="flex shrink-0 items-center gap-4">
           {mapSlug && coords && (
-            <Link to="/map" search={{ focus: mapSlug }} className="tap flex items-center gap-1.5 text-sm font-semibold"><MapIcon className="h-4 w-4" />Map</Link>
+            <Link to="/map" search={{ focus: mapSlug }} className="tap flex items-center gap-1.5 text-sm font-semibold"><MapIcon className="h-4 w-4" />Show on map</Link>
           )}
           <DirectionsButton name={name} address={full} coords={coords} />
         </span>

@@ -26,14 +26,14 @@ type FilterId = (typeof filters)[number]["id"];
 
 const matches = (l: MapListing, f: FilterId) => f === "all" || (f === "spot" ? l.listing_type === "spot" : l.listing_type === "market" && (l.kind === f || (f === "artisan" && l.kind === "craft")));
 
-export function MapboxDiscovery({ token }: { token: string }) {
+export function MapboxDiscovery({ token, focus = null }: { token: string; focus?: { slug: string; latitude: number; longitude: number } | null }) {
   const container = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const fetchListings = useServerFn(getMapListings);
   const [listings, setListings] = useState<MapListing[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<FilterId>("all");
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string | null>(focus?.slug ?? null);
   const [query, setQuery] = useState("");
   const [notice, setNotice] = useState("");
   const visible = useMemo(() => listings.filter((l) => matches(l, filter)), [listings, filter]);
@@ -64,7 +64,7 @@ export function MapboxDiscovery({ token }: { token: string }) {
     void import("mapbox-gl").then(({ default: mapboxgl }) => {
       if (cancelled || !container.current) return;
       mapboxgl.accessToken = token;
-      const map = new mapboxgl.Map({ container: container.current, style: MAP_BASE_STYLE, bounds: US_BOUNDS, fitBoundsOptions: { padding: 24 }, attributionControl: false, dragRotate: false, pitchWithRotate: false, touchPitch: false });
+      const map = new mapboxgl.Map({ container: container.current, style: MAP_BASE_STYLE, ...(focus ? { center: [focus.longitude, focus.latitude] as [number, number], zoom: 13 } : { bounds: US_BOUNDS, fitBoundsOptions: { padding: 24 } }), attributionControl: false, dragRotate: false, pitchWithRotate: false, touchPitch: false });
       map.touchZoomRotate.disableRotation();
       map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
       mapRef.current = map;
@@ -107,7 +107,7 @@ export function MapboxDiscovery({ token }: { token: string }) {
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [token, load]);
+  }, [token, load, focus]);
 
   // Push data + selection styling into the WebGL layers.
   useEffect(() => {
