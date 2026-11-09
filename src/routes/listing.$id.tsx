@@ -1,6 +1,6 @@
-import { createFileRoute, notFound, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ChevronLeft, Heart, Share, Star, Clock, Users } from "lucide-react";
+import { ChevronLeft, Heart, Share, Star, Clock, Users, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { getMarket } from "@/lib/markets";
 import { Gallery } from "@/components/Gallery";
@@ -68,6 +68,9 @@ function Listing() {
           <span className="flex items-center gap-1.5"><Users className="h-4 w-4" />{m.footfall} weekly visitors</span>
         </div>
         <p className="mt-6 text-[17px] leading-relaxed">{m.description}</p>
+        <Link to="/m/$slug" params={{ slug: m.id }} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold underline-offset-4 hover:underline">
+          Market profile, vendors & location <ArrowUpRight className="h-4 w-4" />
+        </Link>
         <h2 className="eyebrow mt-9 text-muted-foreground">Included</h2>
         <div className="mt-3"><Amenities items={m.amenities} /></div>
         <div className="mt-9 grid grid-cols-3 gap-2 text-center">
