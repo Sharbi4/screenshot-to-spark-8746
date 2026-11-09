@@ -1,8 +1,8 @@
 - [x] Add sign-in and saved organizer/vendor onboarding.
 - [x] Add organizer market and stall management, plus stall details.
 - [x] Verify saved data and access controls through the app.
-- [ ] Save account-owned booking requests from market and stall details.
-- [ ] Show saved requests and AI summaries in Studio.
-- [ ] Verify refresh persistence and private access.
-- [ ] Check payment eligibility and confirm the payment setup.
-- [ ] Enable payments and configure customer checkout after approval and pricing details.
+- [x] Save account-owned booking requests from market and stall details.
+- [x] Show saved requests and AI summaries in Studio.
+- [ ] Verify signed-in refresh persistence and private access — waiting for preview sign-in or test-account approval; signed-out checks passed.
+- [x] Check payment eligibility — Stripe fits physical stall bookings.
+- [ ] Enable payments and configure customer checkout — waiting for Stripe setup confirmation and pricing details.
