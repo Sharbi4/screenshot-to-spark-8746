@@ -8,7 +8,8 @@ import type { MapListing } from "./map-style";
  * Secret (sk.*) tokens are used only by the import script for permanent geocoding.
  */
 export const getMapConfig = createServerFn({ method: "GET" }).handler(async () => {
-  const token = process.env["MAPBOX_PUBLIC_TOKEN"] ?? "";
+  // Runtime secret first, then the token from Lovable's Mapbox connector (public, URL-restricted pk.*).
+  const token = process.env["MAPBOX_PUBLIC_TOKEN"] || (import.meta.env["VITE_LOVABLE_CONNECTOR_MAPBOX_PUBLIC_TOKEN"] as string | undefined) || "";
   return { token: token.startsWith("pk.") ? token : "" };
 });
 

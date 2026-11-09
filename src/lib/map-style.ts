@@ -13,7 +13,7 @@ export const mapTheme = {
   label: "#65635e", // --muted-foreground
 } as const;
 
-export const MAP_BASE_STYLE = "mapbox://styles/mapbox/light-v11";
+export const MAP_BASE_STYLE = "mapbox://styles/mapbox/streets-v12";
 export const US_BOUNDS: [[number, number], [number, number]] = [[-125, 24], [-66.5, 49.5]];
 
 export type ListingType = "market" | "spot";
@@ -147,7 +147,6 @@ export function applyTheme(map: { getStyle: () => { layers?: { id: string; type:
       else if (layer.id.startsWith("land") && layer.type === "fill") map.setPaintProperty(layer.id, "fill-color", mapTheme.land);
       else if (layer.id.includes("water") && layer.type === "fill") map.setPaintProperty(layer.id, "fill-color", mapTheme.water);
       else if (/park|national-park|landuse/.test(layer.id) && layer.type === "fill") map.setPaintProperty(layer.id, "fill-color", mapTheme.park);
-      else if (layer.id.startsWith("road") && layer.type === "line") map.setPaintProperty(layer.id, "line-color", mapTheme.road);
     } catch {
       /* layer without that property */
     }

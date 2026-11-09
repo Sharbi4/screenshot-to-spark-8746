@@ -8,6 +8,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { getMapListings } from "@/lib/map.functions";
 import { MAP_BASE_STYLE, US_BOUNDS, applyTheme, mapTheme, markerLayers, pillImage, toFeatureCollection, type MapListing } from "@/lib/map-style";
 import { marketKindLabel, type MarketKind } from "@/lib/marketplace-schema";
+import { DirectionsButton } from "@/components/LocationCard";
 
 const SOURCE = "mb-listings";
 type Feat = { properties?: Record<string, unknown> | null; geometry: { type: string; coordinates: unknown } };
@@ -67,6 +68,8 @@ export function MapboxDiscovery({ token, focus = null }: { token: string; focus?
       const map = new mapboxgl.Map({ container: container.current, style: MAP_BASE_STYLE, ...(focus ? { center: [focus.longitude, focus.latitude] as [number, number], zoom: 13 } : { bounds: US_BOUNDS, fitBoundsOptions: { padding: 24 } }), attributionControl: false, dragRotate: false, pitchWithRotate: false, touchPitch: false });
       map.touchZoomRotate.disableRotation();
       map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
+      map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "bottom-right");
+      map.addControl(new mapboxgl.GeolocateControl({ trackUserLocation: false, showUserLocation: true }), "bottom-right");
       mapRef.current = map;
       map.on("style.load", () => {
         applyTheme(map as unknown as Parameters<typeof applyTheme>[0]);
@@ -220,6 +223,7 @@ export function MapboxDiscovery({ token, focus = null }: { token: string; focus?
                   {sel.bookable && sel.from_price != null ? `$${Math.round(sel.from_price)}` : "View"} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
+              <DirectionsButton name={sel.name} address={`${sel.city}, ${sel.state}`} coords={{ latitude: sel.latitude, longitude: sel.longitude }} className="tap mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-secondary py-3 text-sm font-semibold" />
             </motion.div>
           </>
         )}

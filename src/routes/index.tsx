@@ -6,6 +6,8 @@ import { markets, rails } from "@/lib/markets";
 import heroImage from "@/assets/hero-night-market.jpg";
 import { MarketCard } from "@/components/MarketCard";
 import { Page } from "@/components/PageTransition";
+import { LocationPicker, useSavedPlace } from "@/components/LocationPicker";
+import { NearbyMarkets } from "@/components/NearbyMarkets";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,6 +25,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const [open, setOpen] = useState(false);
+  const [place, setPlace] = useSavedPlace();
   return (
     <Page className="pb-32">
       <section className="relative h-[68vh] min-h-[480px] overflow-hidden">
@@ -38,9 +41,7 @@ function Home() {
         <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-between px-5 pb-16 pt-[max(1.25rem,env(safe-area-inset-top))]">
           <div className="flex items-center justify-between text-on-scrim">
             <span className="text-[17px] font-semibold tracking-tight">vendibook</span>
-            <span className="glass flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-foreground">
-              <MapPin className="h-3.5 w-3.5" /> Phoenix
-            </span>
+            <LocationPicker place={place} onChange={setPlace} />
           </div>
           <div>
             <motion.h1
@@ -64,6 +65,7 @@ function Home() {
       </section>
 
       <div className="mx-auto max-w-6xl space-y-10 pt-6">
+        <NearbyMarkets place={place} />
         {rails.map((r, i) => (
           <section key={r.title}>
             <div className="flex items-end justify-between px-5">

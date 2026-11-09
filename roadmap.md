@@ -6,4 +6,4 @@
 - [ ] Verify signed-in refresh persistence and private access — waiting for preview sign-in or test-account approval; signed-out checks passed.
 - [x] Check payment eligibility — Stripe fits physical stall bookings.
 - [ ] Enable payments and configure customer checkout — waiting for Stripe setup confirmation and pricing details.- [ ] Connect Mapbox; real street map with zoom + directions
-- [ ] Homepage: nationwide market picker, use-my-location, live city selector showing local markets
+- [x] Homepage: nationwide market picker, use-my-location, live city selector showing local markets

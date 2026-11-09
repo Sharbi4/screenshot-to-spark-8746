@@ -12,7 +12,7 @@ const staticMap = (c: Coords, token: string) =>
  * Hands directions to the visitor's own maps app: geo: URI on Android, the native maps
  * scheme on Apple devices, otherwise copies the address. No third-party map provider is embedded.
  */
-function DirectionsButton({ name, address, coords }: { name: string; address: string; coords: Coords | null }) {
+export function DirectionsButton({ name, address, coords, className = "tap flex shrink-0 items-center gap-1.5 text-sm font-semibold" }: { name: string; address: string; coords: Coords | null; className?: string }) {
   const [copied, setCopied] = useState(false);
   function go() {
     const ua = navigator.userAgent;
@@ -22,7 +22,7 @@ function DirectionsButton({ name, address, coords }: { name: string; address: st
     else void navigator.clipboard?.writeText(address || name).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1800); });
   }
   return (
-    <button type="button" onClick={go} className="tap flex shrink-0 items-center gap-1.5 text-sm font-semibold" aria-live="polite">
+    <button type="button" onClick={go} className={className} aria-live="polite">
       {copied ? <><Check className="h-4 w-4" />Address copied</> : <><Navigation className="h-4 w-4" />Directions</>}
     </button>
   );
