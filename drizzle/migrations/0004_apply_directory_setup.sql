@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.markets IS 'Public market directory; imported listings stay unpublished until reviewed.';

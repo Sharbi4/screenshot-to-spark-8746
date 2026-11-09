@@ -29,6 +29,13 @@
       "when": 1794297600000,
       "tag": "0003_national_directory",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794297600001,
+      "tag": "0004_apply_directory_setup",
+      "breakpoints": true
     }
   ]
 }

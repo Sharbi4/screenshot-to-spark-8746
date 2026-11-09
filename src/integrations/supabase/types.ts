@@ -73,6 +73,439 @@ export type Database = {
           },
         ]
       }
+      directory_import_runs: {
+        Row: {
+          created_at: string
+          dataset: string
+          dataset_sha256: string
+          id: string
+          mode: string
+          summary: Json
+        }
+        Insert: {
+          created_at?: string
+          dataset: string
+          dataset_sha256: string
+          id?: string
+          mode: string
+          summary: Json
+        }
+        Update: {
+          created_at?: string
+          dataset?: string
+          dataset_sha256?: string
+          id?: string
+          mode?: string
+          summary?: Json
+        }
+        Relationships: []
+      }
+      market_appearances: {
+        Row: {
+          appearance_date: string
+          booth_label: string
+          created_at: string
+          created_by: string
+          featured: boolean
+          id: string
+          market_id: string
+          source: string
+          status: string
+          vendor_id: string
+        }
+        Insert: {
+          appearance_date: string
+          booth_label?: string
+          created_at?: string
+          created_by?: string
+          featured?: boolean
+          id?: string
+          market_id: string
+          source?: string
+          status?: string
+          vendor_id: string
+        }
+        Update: {
+          appearance_date?: string
+          booth_label?: string
+          created_at?: string
+          created_by?: string
+          featured?: boolean
+          id?: string
+          market_id?: string
+          source?: string
+          status?: string
+          vendor_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_appearances_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "market_appearances_vendor_id_fkey"
+            columns: ["vendor_id"]
+            isOneToOne: false
+            referencedRelation: "vendor_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      market_claims: {
+        Row: {
+          claimant_id: string
+          created_at: string
+          evidence: string
+          full_name: string
+          id: string
+          market_id: string
+          phone: string
+          reviewed_at: string | null
+          reviewer_notes: string
+          role_title: string
+          status: string
+          work_email: string
+        }
+        Insert: {
+          claimant_id: string
+          created_at?: string
+          evidence?: string
+          full_name: string
+          id?: string
+          market_id: string
+          phone?: string
+          reviewed_at?: string | null
+          reviewer_notes?: string
+          role_title: string
+          status?: string
+          work_email: string
+        }
+        Update: {
+          claimant_id?: string
+          created_at?: string
+          evidence?: string
+          full_name?: string
+          id?: string
+          market_id?: string
+          phone?: string
+          reviewed_at?: string | null
+          reviewer_notes?: string
+          role_title?: string
+          status?: string
+          work_email?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_claims_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      market_photos: {
+        Row: {
+          alt_text: string
+          attribution: string
+          id: string
+          image_url: string
+          is_cover: boolean
+          license: string
+          market_id: string
+          owner_name: string
+          permission_note: string
+          source_url: string | null
+          status: string
+          storage_path: string
+          uploaded_at: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          alt_text?: string
+          attribution?: string
+          id?: string
+          image_url: string
+          is_cover?: boolean
+          license: string
+          market_id: string
+          owner_name?: string
+          permission_note?: string
+          source_url?: string | null
+          status?: string
+          storage_path?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          alt_text?: string
+          attribution?: string
+          id?: string
+          image_url?: string
+          is_cover?: boolean
+          license?: string
+          market_id?: string
+          owner_name?: string
+          permission_note?: string
+          source_url?: string | null
+          status?: string
+          storage_path?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_photos_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      market_review_flags: {
+        Row: {
+          created_at: string
+          external_id: string
+          field: string
+          id: string
+          market_id: string | null
+          message: string
+          resolved_at: string | null
+          severity: string
+        }
+        Insert: {
+          created_at?: string
+          external_id: string
+          field: string
+          id?: string
+          market_id?: string | null
+          message: string
+          resolved_at?: string | null
+          severity: string
+        }
+        Update: {
+          created_at?: string
+          external_id?: string
+          field?: string
+          id?: string
+          market_id?: string | null
+          message?: string
+          resolved_at?: string | null
+          severity?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_review_flags_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      market_sources: {
+        Row: {
+          fields: string[]
+          id: string
+          market_id: string
+          notes: string
+          retrieved_on: string
+          source_type: string
+          url: string
+        }
+        Insert: {
+          fields?: string[]
+          id?: string
+          market_id: string
+          notes?: string
+          retrieved_on: string
+          source_type: string
+          url: string
+        }
+        Update: {
+          fields?: string[]
+          id?: string
+          market_id?: string
+          notes?: string
+          retrieved_on?: string
+          source_type?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_sources_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      markets: {
+        Row: {
+          address: string
+          amenities: string[]
+          booking_enabled: boolean
+          booth_price_note: string
+          city: string
+          claim_status: string
+          confidence: string
+          contact_email: string
+          contact_phone: string
+          cover_image_url: string | null
+          created_at: string
+          description: string
+          external_id: string | null
+          geocode_source: string
+          hours: string
+          id: string
+          kind: string
+          last_verified_at: string | null
+          latitude: number | null
+          location_status: string
+          longitude: number | null
+          name: string
+          organizer_name: string
+          owner_id: string | null
+          partner_market_id: string | null
+          postal_code: string
+          published: boolean
+          region: string
+          review_status: string
+          schedule: string
+          schedule_rules: Json
+          season_note: string
+          slug: string
+          social_links: Json
+          source_name: string
+          source_url: string | null
+          state: string
+          time_zone: string
+          upcoming_dates: string[]
+          updated_at: string
+          vendor_application_url: string | null
+          vendor_applications: string
+          vendor_categories: string[]
+          vendor_requirements: string
+          vendor_types: string[]
+          venue_name: string
+          verified_at: string | null
+          website_url: string | null
+        }
+        Insert: {
+          address?: string
+          amenities?: string[]
+          booking_enabled?: boolean
+          booth_price_note?: string
+          city: string
+          claim_status?: string
+          confidence?: string
+          contact_email?: string
+          contact_phone?: string
+          cover_image_url?: string | null
+          created_at?: string
+          description?: string
+          external_id?: string | null
+          geocode_source?: string
+          hours?: string
+          id?: string
+          kind?: string
+          last_verified_at?: string | null
+          latitude?: number | null
+          location_status?: string
+          longitude?: number | null
+          name: string
+          organizer_name?: string
+          owner_id?: string | null
+          partner_market_id?: string | null
+          postal_code?: string
+          published?: boolean
+          region?: string
+          review_status?: string
+          schedule?: string
+          schedule_rules?: Json
+          season_note?: string
+          slug: string
+          social_links?: Json
+          source_name?: string
+          source_url?: string | null
+          state?: string
+          time_zone?: string
+          upcoming_dates?: string[]
+          updated_at?: string
+          vendor_application_url?: string | null
+          vendor_applications?: string
+          vendor_categories?: string[]
+          vendor_requirements?: string
+          vendor_types?: string[]
+          venue_name?: string
+          verified_at?: string | null
+          website_url?: string | null
+        }
+        Update: {
+          address?: string
+          amenities?: string[]
+          booking_enabled?: boolean
+          booth_price_note?: string
+          city?: string
+          claim_status?: string
+          confidence?: string
+          contact_email?: string
+          contact_phone?: string
+          cover_image_url?: string | null
+          created_at?: string
+          description?: string
+          external_id?: string | null
+          geocode_source?: string
+          hours?: string
+          id?: string
+          kind?: string
+          last_verified_at?: string | null
+          latitude?: number | null
+          location_status?: string
+          longitude?: number | null
+          name?: string
+          organizer_name?: string
+          owner_id?: string | null
+          partner_market_id?: string | null
+          postal_code?: string
+          published?: boolean
+          region?: string
+          review_status?: string
+          schedule?: string
+          schedule_rules?: Json
+          season_note?: string
+          slug?: string
+          social_links?: Json
+          source_name?: string
+          source_url?: string | null
+          state?: string
+          time_zone?: string
+          upcoming_dates?: string[]
+          updated_at?: string
+          vendor_application_url?: string | null
+          vendor_applications?: string
+          vendor_categories?: string[]
+          vendor_requirements?: string
+          vendor_types?: string[]
+          venue_name?: string
+          verified_at?: string | null
+          website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "markets_partner_market_id_fkey"
+            columns: ["partner_market_id"]
+            isOneToOne: false
+            referencedRelation: "partner_markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       partner_markets: {
         Row: {
           address: string
@@ -192,12 +625,100 @@ export type Database = {
         }
         Relationships: []
       }
+      vendor_profiles: {
+        Row: {
+          business_name: string
+          category: string
+          contact_email: string
+          cover_image_url: string | null
+          created_at: string
+          description: string
+          id: string
+          instagram_handle: string
+          logo_url: string | null
+          owner_id: string
+          product_image_urls: string[]
+          published: boolean
+          service_area: string
+          show_past_markets: boolean
+          slug: string
+          tagline: string
+          updated_at: string
+          website_url: string | null
+        }
+        Insert: {
+          business_name: string
+          category?: string
+          contact_email?: string
+          cover_image_url?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          instagram_handle?: string
+          logo_url?: string | null
+          owner_id: string
+          product_image_urls?: string[]
+          published?: boolean
+          service_area?: string
+          show_past_markets?: boolean
+          slug: string
+          tagline?: string
+          updated_at?: string
+          website_url?: string | null
+        }
+        Update: {
+          business_name?: string
+          category?: string
+          contact_email?: string
+          cover_image_url?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          instagram_handle?: string
+          logo_url?: string | null
+          owner_id?: string
+          product_image_urls?: string[]
+          published?: boolean
+          service_area?: string
+          show_past_markets?: boolean
+          slug?: string
+          tagline?: string
+          updated_at?: string
+          website_url?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      approve_market_claim: {
+        Args: { p_claim_id: string; p_notes?: string }
+        Returns: undefined
+      }
+      map_listings: {
+        Args: {
+          max_lat: number
+          max_lng: number
+          max_rows?: number
+          min_lat: number
+          min_lng: number
+        }
+        Returns: {
+          bookable: boolean
+          city: string
+          cover_image_url: string
+          from_price: number
+          kind: string
+          latitude: number
+          listing_type: string
+          longitude: number
+          name: string
+          slug: string
+          state: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
