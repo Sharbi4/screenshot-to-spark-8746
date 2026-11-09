@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Page } from "@/components/PageTransition";
 import type { Database } from "@/integrations/supabase/types";
+import { VendorPublicProfile } from "@/components/VendorPublicProfile";
+import { VerifiedMarkets } from "@/components/VerifiedMarkets";
 
 export const Route = createFileRoute("/partner")({ head: () => ({ meta: [
   { title: "Marketpartner onboarding — Vendibook" }, { name: "description", content: "Create your vendor or organizer profile and manage market stalls." }, { property: "og:title", content: "Marketpartner onboarding — Vendibook" }, { property: "og:description", content: "Your business, markets, and stall details in one place." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
@@ -40,6 +42,8 @@ function Partner() {
         </form>
       </section> : <>
         <section className="mt-8 border-b pb-6"><p className="eyebrow text-sage">Profile complete · {profile.participation}</p><div className="mt-2 flex flex-wrap items-start justify-between gap-4"><div><h2 className="text-3xl font-semibold">{profile.business_name}</h2><p className="mt-2 text-muted-foreground">{profile.display_name} · {profile.city}{profile.category && ` · ${profile.category}`}</p><p className="mt-3 text-muted-foreground">{profile.description}</p></div><Button variant="outline" onClick={() => { setRole(profile.participation === "both" ? "both" : profile.participation === "organizer" ? "organizer" : "vendor"); setEditing(true); }}>Edit profile</Button></div></section>
+        {(profile.participation === "vendor" || profile.participation === "both") && <VendorPublicProfile userId={user.id} businessName={profile.business_name} category={profile.category} description={profile.description} city={profile.city} />}
+        {(profile.participation === "organizer" || profile.participation === "both") && <VerifiedMarkets userId={user.id} />}
         {(profile.participation === "organizer" || profile.participation === "both") && <section className="mt-8"><div className="flex items-center justify-between"><h2 className="text-2xl font-semibold">Your markets</h2><Button variant="secondary" onClick={() => setAdding(!adding)}><Plus />Add market</Button></div>
           {adding && <form className="mt-6 grid gap-4 border-b pb-6 sm:grid-cols-2" onSubmit={event => { event.preventDefault(); const f = new FormData(event.currentTarget); void run(() => createMarket({ data: { name: String(f.get("name")), city: String(f.get("city")), address: String(f.get("address")), schedule: String(f.get("schedule")), hours: String(f.get("hours")), description: String(f.get("description")) } })); }}>
             <Field label="Market name" name="name" /><Field label="City" name="city" /><Field label="Street address" name="address" /><Field label="Market days" name="schedule" /><Field label="Opening hours" name="hours" /><Field label="Description" name="description" required={false} /><Button disabled={busy}>Save market</Button>

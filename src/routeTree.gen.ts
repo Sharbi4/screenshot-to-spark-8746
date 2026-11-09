@@ -17,7 +17,10 @@ import { Route as PartnerRouteImport } from './routes/partner'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ListingIdRouteImport } from './routes/listing.$id'
+import { Route as MSlugRouteImport } from './routes/m.$slug'
+import { Route as ManageSlugRouteImport } from './routes/manage.$slug'
 import { Route as StallsIdRouteImport } from './routes/stalls.$id'
+import { Route as VSlugRouteImport } from './routes/v.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -59,9 +62,24 @@ const ListingIdRoute = ListingIdRouteImport.update({
   path: '/listing/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MSlugRoute = MSlugRouteImport.update({
+  id: '/m/$slug',
+  path: '/m/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageSlugRoute = ManageSlugRouteImport.update({
+  id: '/manage/$slug',
+  path: '/manage/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StallsIdRoute = StallsIdRouteImport.update({
   id: '/stalls/$id',
   path: '/stalls/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VSlugRoute = VSlugRouteImport.update({
+  id: '/v/$slug',
+  path: '/v/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -74,7 +92,10 @@ export interface FileRoutesByFullPath {
   '/profile': typeof ProfileRoute
   '/reset-password': typeof ResetPasswordRoute
   '/listing/$id': typeof ListingIdRoute
+  '/m/$slug': typeof MSlugRoute
+  '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
+  '/v/$slug': typeof VSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -85,7 +106,10 @@ export interface FileRoutesByTo {
   '/profile': typeof ProfileRoute
   '/reset-password': typeof ResetPasswordRoute
   '/listing/$id': typeof ListingIdRoute
+  '/m/$slug': typeof MSlugRoute
+  '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
+  '/v/$slug': typeof VSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -97,7 +121,10 @@ export interface FileRoutesById {
   '/profile': typeof ProfileRoute
   '/reset-password': typeof ResetPasswordRoute
   '/listing/$id': typeof ListingIdRoute
+  '/m/$slug': typeof MSlugRoute
+  '/manage/$slug': typeof ManageSlugRoute
   '/stalls/$id': typeof StallsIdRoute
+  '/v/$slug': typeof VSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -110,7 +137,10 @@ export interface FileRouteTypes {
     | '/profile'
     | '/reset-password'
     | '/listing/$id'
+    | '/m/$slug'
+    | '/manage/$slug'
     | '/stalls/$id'
+    | '/v/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -121,7 +151,10 @@ export interface FileRouteTypes {
     | '/profile'
     | '/reset-password'
     | '/listing/$id'
+    | '/m/$slug'
+    | '/manage/$slug'
     | '/stalls/$id'
+    | '/v/$slug'
   id:
     | '__root__'
     | '/'
@@ -132,7 +165,10 @@ export interface FileRouteTypes {
     | '/profile'
     | '/reset-password'
     | '/listing/$id'
+    | '/m/$slug'
+    | '/manage/$slug'
     | '/stalls/$id'
+    | '/v/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -144,7 +180,10 @@ export interface RootRouteChildren {
   ProfileRoute: typeof ProfileRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   ListingIdRoute: typeof ListingIdRoute
+  MSlugRoute: typeof MSlugRoute
+  ManageSlugRoute: typeof ManageSlugRoute
   StallsIdRoute: typeof StallsIdRoute
+  VSlugRoute: typeof VSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -205,11 +244,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListingIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/m/$slug': {
+      id: '/m/$slug'
+      path: '/m/$slug'
+      fullPath: '/m/$slug'
+      preLoaderRoute: typeof MSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage/$slug': {
+      id: '/manage/$slug'
+      path: '/manage/$slug'
+      fullPath: '/manage/$slug'
+      preLoaderRoute: typeof ManageSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stalls/$id': {
       id: '/stalls/$id'
       path: '/stalls/$id'
       fullPath: '/stalls/$id'
       preLoaderRoute: typeof StallsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v/$slug': {
+      id: '/v/$slug'
+      path: '/v/$slug'
+      fullPath: '/v/$slug'
+      preLoaderRoute: typeof VSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -224,7 +284,10 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileRoute: ProfileRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   ListingIdRoute: ListingIdRoute,
+  MSlugRoute: MSlugRoute,
+  ManageSlugRoute: ManageSlugRoute,
   StallsIdRoute: StallsIdRoute,
+  VSlugRoute: VSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
