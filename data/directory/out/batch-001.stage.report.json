@@ -1,0 +1,247 @@
+{
+  "dataset": "batch-001",
+  "sha256": "e7882855f7571b4596d856cf77d188916e7f8fef0b702e73584ab26ba5975521",
+  "mode": "stage",
+  "generated_on": "2026-11-09",
+  "geocoder": "census",
+  "summary": {
+    "researched": 16,
+    "verified": 15,
+    "needs_review": 1,
+    "ready_to_stage": 15,
+    "would_publish": 0,
+    "on_map": 7,
+    "inserts": 16,
+    "updates": 0,
+    "skipped_claimed": 0,
+    "skipped_duplicates": 0,
+    "blocking_flags": 2,
+    "warnings": 10,
+    "invalid": 0
+  },
+  "errors": [],
+  "flags": [
+    {
+      "external_id": "us-wi-madison-dcfm-saturday-on-the-square",
+      "field": "verification",
+      "severity": "info",
+      "message": "Venue is the Capitol Square; no street number or ZIP is published, so the location needs manual pin placement."
+    },
+    {
+      "external_id": "us-wi-madison-dcfm-saturday-on-the-square",
+      "field": "location",
+      "severity": "warning",
+      "message": "Address could not be geocoded; hidden from the map until a pin is confirmed."
+    },
+    {
+      "external_id": "us-wi-madison-dcfm-saturday-on-the-square",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-wi-madison-dcfm-wednesday",
+      "field": "verification",
+      "severity": "info",
+      "message": "Address is a block, not a street number; geocoded point is approximate."
+    },
+    {
+      "external_id": "us-wi-madison-dcfm-wednesday",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-wi-madison-dcfm-holiday",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-la-new-orleans-crescent-city-uptown-tuesday",
+      "field": "location",
+      "severity": "warning",
+      "message": "Address could not be geocoded; hidden from the map until a pin is confirmed."
+    },
+    {
+      "external_id": "us-la-new-orleans-crescent-city-uptown-tuesday",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-la-new-orleans-crescent-city-mid-city-thursday",
+      "field": "location",
+      "severity": "warning",
+      "message": "Address could not be geocoded; hidden from the map until a pin is confirmed."
+    },
+    {
+      "external_id": "us-la-new-orleans-crescent-city-mid-city-thursday",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-la-new-orleans-crescent-city-city-park-sunday",
+      "field": "location",
+      "severity": "warning",
+      "message": "Address could not be geocoded; hidden from the map until a pin is confirmed."
+    },
+    {
+      "external_id": "us-la-new-orleans-crescent-city-city-park-sunday",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-or-portland-psu-farmers-market",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-oh-cincinnati-findlay-market",
+      "field": "location",
+      "severity": "warning",
+      "message": "Address could not be geocoded; hidden from the map until a pin is confirmed."
+    },
+    {
+      "external_id": "us-oh-cincinnati-findlay-market",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-ny-queens-queens-night-market",
+      "field": "verification",
+      "severity": "info",
+      "message": "No street address published (venue described as behind the New York Hall of Science); pin needs manual placement."
+    },
+    {
+      "external_id": "us-ny-queens-queens-night-market",
+      "field": "verification",
+      "severity": "info",
+      "message": "Out of season — 2027 dates not yet published."
+    },
+    {
+      "external_id": "us-ny-queens-queens-night-market",
+      "field": "location",
+      "severity": "warning",
+      "message": "No street address published; hidden from the map until a pin is placed manually."
+    },
+    {
+      "external_id": "us-ny-queens-queens-night-market",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-ny-brooklyn-brooklyn-flea-dumbo",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-ny-new-york-chelsea-flea",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-nm-santa-fe-santa-fe-farmers-market",
+      "field": "verification",
+      "severity": "info",
+      "message": "Street address is the published contact address; confirm it matches the market pavilion entrance."
+    },
+    {
+      "external_id": "us-nm-santa-fe-santa-fe-farmers-market",
+      "field": "location",
+      "severity": "warning",
+      "message": "Address could not be geocoded; hidden from the map until a pin is confirmed."
+    },
+    {
+      "external_id": "us-nm-santa-fe-santa-fe-farmers-market",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-nm-santa-fe-railyard-artisan-market",
+      "field": "verification",
+      "severity": "info",
+      "message": "Shares the Farmers' Market Pavilion address; confirm operator details with the organizer."
+    },
+    {
+      "external_id": "us-nm-santa-fe-railyard-artisan-market",
+      "field": "location",
+      "severity": "warning",
+      "message": "Address could not be geocoded; hidden from the map until a pin is confirmed."
+    },
+    {
+      "external_id": "us-nm-santa-fe-railyard-artisan-market",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-ma-boston-boston-public-market",
+      "field": "verification",
+      "severity": "info",
+      "message": "Organizer legal name not published on the page; left blank until confirmed."
+    },
+    {
+      "external_id": "us-ma-boston-boston-public-market",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-mn-minneapolis-minneapolis-farmers-market",
+      "field": "verification",
+      "severity": "info",
+      "message": "Operating schedule not verified — confirm hours and season manually before publishing."
+    },
+    {
+      "external_id": "us-mn-minneapolis-minneapolis-farmers-market",
+      "field": "verification",
+      "severity": "blocking",
+      "message": "Record marked needs_review by researcher."
+    },
+    {
+      "external_id": "us-mn-minneapolis-minneapolis-farmers-market",
+      "field": "schedule",
+      "severity": "blocking",
+      "message": "No verified operating schedule."
+    },
+    {
+      "external_id": "us-mn-minneapolis-minneapolis-farmers-market",
+      "field": "location",
+      "severity": "warning",
+      "message": "Address could not be geocoded; hidden from the map until a pin is confirmed."
+    },
+    {
+      "external_id": "us-mn-minneapolis-minneapolis-farmers-market",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    },
+    {
+      "external_id": "us-ca-pasadena-rose-bowl-flea-market",
+      "field": "verification",
+      "severity": "info",
+      "message": "General admission hours not captured — show 'check website for hours'."
+    },
+    {
+      "external_id": "us-ca-pasadena-rose-bowl-flea-market",
+      "field": "schedule",
+      "severity": "warning",
+      "message": "Opening hours not published; page shows 'check website for hours'."
+    },
+    {
+      "external_id": "us-ca-pasadena-rose-bowl-flea-market",
+      "field": "photo",
+      "severity": "info",
+      "message": "No licensed photo; styled placeholder will be used."
+    }
+  ]
+}

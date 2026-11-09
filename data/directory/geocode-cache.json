@@ -1,0 +1,86 @@
+{
+  "Capitol Square, Madison, WI": {
+    "census": null
+  },
+  "200 Martin Luther King Jr Blvd, Madison, WI": {
+    "census": {
+      "latitude": 43.074690560156,
+      "longitude": -89.380237291661,
+      "source": "us_census",
+      "matched": "200 KING ST, MADISON, WI, 53703",
+      "quality": "exact"
+    }
+  },
+  "1 John Nolen Drive, Madison, WI": {
+    "census": {
+      "latitude": 43.076054260115,
+      "longitude": -89.37561580798,
+      "source": "us_census",
+      "matched": "1 JOHN NOLEN DR, MADISON, WI, 53703",
+      "quality": "exact"
+    }
+  },
+  "25 Walnut Street, New Orleans, LA": {
+    "census": null
+  },
+  "500 N. Norman C. Francis Parkway, New Orleans, LA": {
+    "census": null
+  },
+  "33 Dreyfous Drive, New Orleans, LA": {
+    "census": null
+  },
+  "1803 SW Park Ave, Portland, OR": {
+    "census": {
+      "latitude": 45.512366190618,
+      "longitude": -122.685195110494,
+      "source": "us_census",
+      "matched": "1803 SW PARK AVE, PORTLAND, OR, 97201",
+      "quality": "exact"
+    }
+  },
+  "1801 Race Street, Cincinnati, OH 45202": {
+    "census": null
+  },
+  "80 Pearl Street, Brooklyn, NY 11201": {
+    "census": {
+      "latitude": 40.70363757453,
+      "longitude": -73.98764053176,
+      "source": "us_census",
+      "matched": "80 PEARL ST, BROOKLYN, NY, 11201",
+      "quality": "exact"
+    }
+  },
+  "29 W 25th Street, New York, NY 10010": {
+    "census": {
+      "latitude": 40.7434222636,
+      "longitude": -73.989922250869,
+      "source": "us_census",
+      "matched": "29 W 25TH ST, NEW YORK, NY, 10010",
+      "quality": "exact"
+    }
+  },
+  "1607 Paseo de Peralta, Santa Fe, NM 87501": {
+    "census": null
+  },
+  "100 Hanover Street, Boston, MA 02108": {
+    "census": {
+      "latitude": 42.361849647431,
+      "longitude": -71.057106926107,
+      "source": "us_census",
+      "matched": "100 HANOVER ST, BOSTON, MA, 02108",
+      "quality": "exact"
+    }
+  },
+  "312 E Lyndale Ave N, Minneapolis, MN 55405": {
+    "census": null
+  },
+  "1001 Rose Bowl Dr, Pasadena, CA 91103": {
+    "census": {
+      "latitude": 34.163159220995,
+      "longitude": -118.165735588104,
+      "source": "us_census",
+      "matched": "1001 ROSE BOWL DR, PASADENA, CA, 91103",
+      "quality": "exact"
+    }
+  }
+}
