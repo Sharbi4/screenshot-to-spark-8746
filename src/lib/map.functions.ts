@@ -31,3 +31,15 @@ export const getMapListings = createServerFn({ method: "GET" })
     if (error || !rows) return { listings: [], truncated: false }; // e.g. migration not yet applied
     return { listings: rows.map((r) => ({ ...r, listing_type: r.listing_type === "spot" ? "spot" : "market" })), truncated: rows.length >= limit };
   });
+
+/** Coordinates of one published, pinned market so "Show on map" links can zoom straight to it. */
+export const getMapFocus = createServerFn({ method: "GET" })
+  .inputValidator((input: unknown) => z.object({ slug: z.string().min(3).max(80).regex(/^[a-z0-9-]+$/) }).parse(input))
+  .handler(async ({ data }): Promise<{ slug: string; latitude: number; longitude: number } | null> => {
+    const { createPublicClient } = await import("./supabase-public.server");
+    const client = createPublicClient();
+    if (!client) return null;
+    const { data: row } = await client.from("markets").select("slug,latitude,longitude").eq("slug", data.slug).eq("published", true).maybeSingle();
+    if (!row || row.latitude == null || row.longitude == null) return null;
+    return { slug: row.slug, latitude: row.latitude, longitude: row.longitude };
+  });

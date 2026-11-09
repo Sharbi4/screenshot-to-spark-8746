@@ -5,7 +5,8 @@ import { useState } from "react";
 import { markets, type Market } from "@/lib/markets";
 import { Gallery } from "@/components/Gallery";
 import { MapboxDiscovery } from "@/components/MapboxDiscovery";
-import { getMapConfig } from "@/lib/map.functions";
+import { getMapConfig, getMapFocus } from "@/lib/map.functions";
+import { z } from "zod";
 
 export const Route = createFileRoute("/map")({
   head: () => ({
@@ -18,16 +19,19 @@ export const Route = createFileRoute("/map")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  validateSearch: (search: Record<string, unknown>): { focus?: string | undefined } => ({ focus: typeof search["focus"] === "string" && /^[a-z0-9-]{1,120}$/.test(search["focus"]) ? search["focus"] : undefined }),
-  loader: () => getMapConfig(),
+  validateSearch: (s: Record<string, unknown>) => z.object({ focus: z.string().max(80).optional().catch(undefined) }).parse(s),
+  loaderDeps: ({ search }) => ({ focus: search.focus }),
+  loader: async ({ deps }) => {
+    const [config, focus] = await Promise.all([getMapConfig(), deps.focus ? getMapFocus({ data: { slug: deps.focus } }).catch(() => null) : Promise.resolve(null)]);
+    return { ...config, focus };
+  },
   component: MapRoute,
 });
 
 // Mapbox when a public token is configured; otherwise the original stylised prototype map.
 function MapRoute() {
-  const { token } = Route.useLoaderData();
-  const { focus } = Route.useSearch();
-  return token ? <MapboxDiscovery token={token} focus={focus} /> : <MapView />;
+  const { token, focus } = Route.useLoaderData();
+  return token ? <MapboxDiscovery key={focus?.slug ?? "all"} token={token} focus={focus} /> : <MapView />;
 }
 
 function MapView() {

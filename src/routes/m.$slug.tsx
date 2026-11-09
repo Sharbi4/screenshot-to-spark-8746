@@ -17,7 +17,7 @@ import type { MarketProfile } from "@/lib/directory.server";
 
 export const Route = createFileRoute("/m/$slug")({
   loader: async ({ params }) => {
-    const [profile, map, origin] = await Promise.all([getMarketProfile({ data: { slug: params.slug } }), getMapConfig(), getSiteOrigin()]);
+    const [profile, map, origin] = await Promise.all([getMarketProfile({ data: { slug: params.slug } }), getMapConfig().catch(() => ({ token: "" })), getSiteOrigin().catch(() => "")]);
     if (!profile) throw notFound();
     return { ...profile, mapToken: map.token, canonical: origin ? `${origin}/m/${profile.slug}` : "" };
   },
