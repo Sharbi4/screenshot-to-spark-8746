@@ -1,0 +1,110 @@
+{
+  "note": "Candidates that need manual verification (phone/email or organizer confirmation). Not importable.",
+  "candidates": [
+    {
+      "name": "Pike Place Market",
+      "city": "Seattle",
+      "state": "WA",
+      "url": "https://www.pikeplacemarket.org/",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Union Square Greenmarket",
+      "city": "New York",
+      "state": "NY",
+      "url": "https://www.grownyc.org/greenmarket/manhattan-union-square-m",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Ferry Plaza Farmers Market",
+      "city": "San Francisco",
+      "state": "CA",
+      "url": "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Eastern Market",
+      "city": "Detroit",
+      "state": "MI",
+      "url": "https://easternmarket.org/",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Reading Terminal Market",
+      "city": "Philadelphia",
+      "state": "PA",
+      "url": "https://readingterminalmarket.org/",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Christkindlmarket Chicago",
+      "city": "Chicago",
+      "state": "IL",
+      "url": "https://www.christkindlmarket.com/",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Dallas Farmers Market",
+      "city": "Dallas",
+      "state": "TX",
+      "url": "https://dallasfarmersmarket.org/",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Lancaster Central Market",
+      "city": "Lancaster",
+      "state": "PA",
+      "url": "https://www.centralmarketlancaster.com/",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "SFC Farmers' Market Downtown",
+      "city": "Austin",
+      "state": "TX",
+      "url": "https://www.sustainablefoodcenter.org/programs/sfc-farmers-markets",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Hollywood Farmers' Market",
+      "city": "Los Angeles",
+      "state": "CA",
+      "url": "https://www.hollywoodfarmersmarket.net/",
+      "reason": "robots.txt disallows automated access"
+    },
+    {
+      "name": "Anchorage Market",
+      "city": "Anchorage",
+      "state": "AK",
+      "url": "https://www.anchoragemarkets.com/",
+      "reason": "site unreachable during research"
+    },
+    {
+      "name": "Downtown Farmers' Market",
+      "city": "Des Moines",
+      "state": "IA",
+      "url": "https://www.downtowndesmoines.com/farmers-market/",
+      "reason": "site unreachable during research"
+    },
+    {
+      "name": "Charleston Farmers Market",
+      "city": "Charleston",
+      "state": "SC",
+      "url": "https://www.charleston-sc.gov/1134/Charleston-Farmers-Market",
+      "reason": "site unreachable during research"
+    },
+    {
+      "name": "Off the Grid: Fort Mason Center",
+      "city": "San Francisco",
+      "state": "CA",
+      "url": "https://offthegrid.com/",
+      "reason": "schedule rendered client-side; not verifiable automatically"
+    },
+    {
+      "name": "626 Night Market",
+      "city": "Arcadia",
+      "state": "CA",
+      "url": "https://www.626nightmarket.com/",
+      "reason": "2027 season dates not yet published"
+    }
+  ]
+}
