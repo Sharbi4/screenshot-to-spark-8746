@@ -14,6 +14,65 @@ export type Database = {
   }
   public: {
     Tables: {
+      booking_requests: {
+        Row: {
+          booking_date: string
+          city: string
+          created_at: string
+          daily_price: number
+          hours: string
+          id: string
+          market_id: string
+          market_name: string
+          notes: string
+          owner_id: string
+          request_key: string
+          stall_id: string | null
+          stall_label: string
+          status: string
+        }
+        Insert: {
+          booking_date: string
+          city: string
+          created_at?: string
+          daily_price: number
+          hours: string
+          id?: string
+          market_id: string
+          market_name: string
+          notes?: string
+          owner_id: string
+          request_key: string
+          stall_id?: string | null
+          stall_label: string
+          status?: string
+        }
+        Update: {
+          booking_date?: string
+          city?: string
+          created_at?: string
+          daily_price?: number
+          hours?: string
+          id?: string
+          market_id?: string
+          market_name?: string
+          notes?: string
+          owner_id?: string
+          request_key?: string
+          stall_id?: string | null
+          stall_label?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "booking_requests_stall_id_fkey"
+            columns: ["stall_id"]
+            isOneToOne: false
+            referencedRelation: "partner_stalls"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       partner_markets: {
         Row: {
           address: string

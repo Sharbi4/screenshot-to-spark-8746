@@ -5,6 +5,7 @@ import { useState } from "react";
 import { getMarket } from "@/lib/markets";
 import { Gallery } from "@/components/Gallery";
 import { Amenities } from "@/components/Amenities";
+import { BookingRequest } from "@/components/BookingRequest";
 
 export const Route = createFileRoute("/listing/$id")({
   loader: ({ params }) => {
@@ -33,7 +34,6 @@ function Listing() {
   const m = Route.useLoaderData();
   const router = useRouter();
   const [saved, setSaved] = useState(false);
-  const [booked, setBooked] = useState(false);
 
   return (
     <main className="pb-36">
@@ -86,13 +86,7 @@ function Listing() {
             <p className="text-lg font-semibold leading-none tracking-tight">${m.price}<span className="text-sm font-normal text-muted-foreground"> / day</span></p>
             <p className="mt-1 text-xs text-muted-foreground">Next: {m.day}</p>
           </div>
-          <motion.button
-            whileTap={{ scale: 0.96 }}
-            onClick={() => setBooked(true)}
-            className={`rounded-full px-7 py-4 text-[15px] font-semibold transition-colors ${booked ? "bg-sage text-sage-foreground" : "bg-honey text-honey-foreground"}`}
-          >
-            {booked ? "Requested ✓" : "Book Space"}
-          </motion.button>
+          <BookingRequest marketId={m.id} name={m.name} />
         </div>
       </div>
     </main>

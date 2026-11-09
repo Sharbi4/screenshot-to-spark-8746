@@ -9,8 +9,9 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Booking summaries use AI Gateway inside a server-only helper called through a validated server function; only server-owned public demo booking IDs are accepted to prevent arbitrary inference prompts.
-- Studio caches summaries in TanStack Query for the current session and disables automatic replay; booking persistence and private-user authorization remain separate work.
+- Booking summaries use AI Gateway inside a server-only helper called through validated server functions; persisted booking IDs are authenticated and owner-scoped, and demo IDs resolve only server-owned facts to prevent arbitrary inference prompts.
+- Studio reads owner-scoped saved requests in a session-keyed TanStack Query view and caches summaries for the session without automatic replay, so private rows never become public demo content.
+- Booking requests snapshot server-resolved market or public stall facts with server-derived ownership and a unique per-owner submission key, so prices cannot be spoofed and repeated submissions do not create duplicate rows.
 
 - Marketpartner uses owner-scoped profiles and markets, authenticated validated server functions, and publicly readable stall detail fields; participation is a business preference, not an authorization role.
 - Account identity is observed once in the root session provider; public onboarding screens show inline sign-in and never call protected loaders.

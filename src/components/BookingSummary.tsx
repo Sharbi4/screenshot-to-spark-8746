@@ -4,14 +4,16 @@ import { useServerFn } from "@tanstack/react-start";
 import { Sparkles, LoaderCircle, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBookingSummary } from "@/lib/booking-summary.functions";
+import { getSavedBookingSummary } from "@/lib/bookings.functions";
 
-export function BookingSummary({ marketId }: { marketId: string }) {
+export function BookingSummary({ marketId, bookingId }: { marketId?: string; bookingId?: string }) {
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => setHydrated(true), []);
   const summarize = useServerFn(getBookingSummary);
+  const summarizeSaved = useServerFn(getSavedBookingSummary);
   const { data, isFetching, isError, refetch } = useQuery({
-    queryKey: ["booking-summary", marketId],
-    queryFn: () => summarize({ data: { marketId } }),
+    queryKey: ["booking-summary", bookingId ?? marketId],
+    queryFn: () => bookingId ? summarizeSaved({ data: { id: bookingId } }) : summarize({ data: { marketId: marketId ?? "" } }),
     enabled: hydrated,
     staleTime: Infinity,
     retry: false,

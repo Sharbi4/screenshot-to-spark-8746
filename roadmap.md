@@ -1,3 +1,6 @@
 - [x] Add sign-in and saved organizer/vendor onboarding.
 - [x] Add organizer market and stall management, plus stall details.
 - [x] Verify saved data and access controls through the app.
+- [ ] Save account-owned booking requests from market and stall details.
+- [ ] Show saved requests and AI summaries in Studio.
+- [ ] Verify refresh persistence and private access.
