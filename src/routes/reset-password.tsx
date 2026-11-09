@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/reset-password")({ head: () => ({ meta: [
-  { title: "Reset your password — Vendibook" }, { name: "description", content: "Set a new password for your Marketpartner account." }, { property: "og:title", content: "Reset your password — Vendibook" }, { property: "og:description", content: "Recover access to your Marketpartner account." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+  { title: "Reset your password — Vendibook" }, { name: "description", content: "Set a new password for your Market Partner account." }, { property: "og:title", content: "Reset your password — Vendibook" }, { property: "og:description", content: "Recover access to your Market Partner account." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
 ] }), component: Reset });
 function Reset() {
   const [valid, setValid] = useState(false); const [message, setMessage] = useState(""); const [busy, setBusy] = useState(false);

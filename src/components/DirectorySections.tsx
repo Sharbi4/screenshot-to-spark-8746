@@ -3,7 +3,7 @@ import { ArrowUpRight, CalendarDays, Clock, Globe, Mail, Phone, AtSign, Clipboar
 import type { DirectoryDetails } from "@/lib/directory.server";
 import { formatDate, formatRule } from "@/lib/schedule-format";
 
-/** Hours & season, exactly as published by the organizer. */
+/** Hours & season, exactly as published by the market. */
 export function ScheduleCard({ d }: { d: DirectoryDetails }) {
   const rules = d.scheduleRules.map(formatRule);
   return (
@@ -72,7 +72,7 @@ export function VendorInfo({ d, claimed }: { d: DirectoryDetails; claimed: boole
               {d.vendorApplications === "open" ? "Accepting vendor applications" : d.vendorApplications === "closed" ? "Vendor applications closed" : "Vendor applications"}
             </p>
             <p className="mt-1 text-sm text-muted-foreground">
-              {d.vendorApplicationUrl ? "Applications are handled on the organizer's website." : "Contact the organizer for vendor opportunities."}
+              {d.vendorApplicationUrl ? "Applications are handled on the market's official website." : "Contact the market for vendor opportunities."}
             </p>
             {d.vendorApplicationUrl && (
               <a href={d.vendorApplicationUrl} target="_blank" rel="noopener noreferrer" className="tap mt-3 inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground">
@@ -98,7 +98,7 @@ export function VendorInfo({ d, claimed }: { d: DirectoryDetails; claimed: boole
       </div>
       {!d.bookingEnabled && (
         <p className="px-1 text-xs text-muted-foreground">
-          {claimed ? "The organizer manages this page. Online booking opens once they activate it." : "This is an informational listing. MarketBloom bookings open only after a verified organizer activates them."}
+          {claimed ? "A verified Market Partner manages this page. Online booking opens once they activate it." : "This is an informational listing. MarketBloom bookings open only after a verified Market Partner activates them."}
         </p>
       )}
     </div>
@@ -119,7 +119,7 @@ export function SourcesNote({ d, organizer }: { d: DirectoryDetails; organizer: 
             ))
           : "public sources"}
         {organizer && <> · Operated by {organizer}</>}
-        {d.photo?.attribution && <> · Photo: {d.photo.attribution}</>}. Schedules can change. Confirm with the organizer before visiting.
+        {d.photo?.attribution && <> · Photo: {d.photo.attribution}</>}. Schedules can change. Confirm with the market before visiting.
       </p>
     </div>
   );

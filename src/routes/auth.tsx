@@ -10,8 +10,8 @@ import { safeRedirect } from "@/lib/safe-redirect";
 import "@lovable.dev/cloud-auth-js/styles.css";
 
 export const Route = createFileRoute("/auth")({ validateSearch: (search: Record<string, unknown>): { redirect?: string | undefined } => ({ redirect: safeRedirect(search["redirect"]) }), head: () => ({ meta: [
-  { title: "Marketpartner sign in — Vendibook" }, { name: "description", content: "Sign in or create your Marketpartner account." },
-  { property: "og:title", content: "Marketpartner sign in — Vendibook" }, { property: "og:description", content: "Join Vendibook as a vendor or market organizer." },
+  { title: "Market Partner sign in — Vendibook" }, { name: "description", content: "Sign in or create your Market Partner account." },
+  { property: "og:title", content: "Market Partner sign in — Vendibook" }, { property: "og:description", content: "Join Vendibook as a vendor or Market Partner." },
   { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
 ] }), component: Auth });
 
@@ -51,7 +51,7 @@ function Auth() {
     finally { setBusy(false); }
   }
   return <Page className="mx-auto max-w-md px-5 pb-32 pt-12">
-    <p className="eyebrow text-sage">Vendibook</p><h1 className="display mt-3 text-5xl">Marketpartner</h1>
+    <p className="eyebrow text-sage">Vendibook</p><h1 className="display mt-3 text-5xl">Market Partner</h1>
     {user ? <div className="mt-8"><p className="text-muted-foreground">You’re signed in.</p><Button asChild className="mt-4"><Link to={next}>Continue to your account</Link></Button></div> : <>
       <h2 className="mt-8 text-2xl font-semibold">{mode === "signup" ? "Create your account" : mode === "reset" ? "Reset password" : "Welcome back"}</h2>
       <form onSubmit={submit} className="mt-5 space-y-4">

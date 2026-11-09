@@ -99,7 +99,7 @@ export function reviewFlags(r: DirectoryRecord, geocode: Geocode | null): Flag[]
   if (r.latitude == null && !geocode) add("location", "warning", r.address ? "Address could not be geocoded; hidden from the map until a pin is confirmed." : "No street address published; hidden from the map until a pin is placed manually.");
   if (geocode?.quality === "approximate") add("location", "warning", `Approximate geocode (${geocode.matched}).`);
   if (r.photo.status === "none") add("photo", "info", "No licensed photo; styled placeholder will be used.");
-  if (r.booth_price_note) add("booth_price_note", "info", "Booth price note must be verbatim from the organizer.");
+  if (r.booth_price_note) add("booth_price_note", "info", "Booth price note must be verbatim from the market.");
   return f;
 }
 
@@ -118,7 +118,7 @@ export function plan(records: DirectoryRecord[], existing: ExistingMarket[], geo
     let duplicateOf: string | undefined;
     if (current && current.claim_status === "claimed") {
       action = "skip_claimed";
-      recFlags.push({ external_id: r.external_id, field: "record", severity: "info", message: "Market is organizer-controlled; research data not applied." });
+      recFlags.push({ external_id: r.external_id, field: "record", severity: "info", message: "Market is managed by a verified Market Partner; research data not applied." });
     } else if (!current) {
       const dup = findDuplicate(r, coords, pool);
       if (dup) {

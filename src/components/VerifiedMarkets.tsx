@@ -8,14 +8,14 @@ import { Input } from "@/components/ui/input";
 import { cancelVendorAppearance, confirmVendorAppearance, getMyVerifiedMarkets } from "@/lib/vendor-profile.functions";
 import { formatDay } from "./VendorDirectory";
 
-/** Verified organizers confirm vendors for dates; this drives the public vendor directory and vendor calendars. */
+/** Verified Market Partners confirm vendors for dates; this drives the public vendor directory and vendor calendars. */
 export function VerifiedMarkets({ userId }: { userId: string }) {
   const load = useServerFn(getMyVerifiedMarkets);
   const { data: markets = [] } = useQuery({ queryKey: ["verified-markets", userId], queryFn: () => load(), retry: false });
   if (!markets.length) return null;
   return (
     <section className="mt-8 border-b pb-8">
-      <p className="eyebrow flex items-center gap-1.5 text-sage"><ShieldCheck className="h-3.5 w-3.5" />Verified organizer</p>
+      <p className="eyebrow flex items-center gap-1.5 text-sage"><ShieldCheck className="h-3.5 w-3.5" />Verified Market Partner</p>
       <h2 className="mt-2 text-2xl font-semibold">Your public markets</h2>
       {markets.map((m) => <MarketVendors key={m.id} userId={userId} market={m} />)}
     </section>
