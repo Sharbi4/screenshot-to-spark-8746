@@ -16,3 +16,11 @@ export const getVendorProfile = createServerFn({ method: "GET" })
     const { loadVendorProfile } = await import("./directory.server");
     return loadVendorProfile(data.slug);
   });
+
+const placeInput = z.object({ state: z.string().regex(/^[a-zA-Z]{2}$/), city: z.string().regex(/^[a-z0-9-]{1,80}$/).optional() });
+export const getPlaceDirectory = createServerFn({ method: "GET" })
+  .inputValidator((input: unknown) => placeInput.parse(input))
+  .handler(async ({ data }) => {
+    const { loadPlace } = await import("./directory.server");
+    return loadPlace(data.state, data.city);
+  });
