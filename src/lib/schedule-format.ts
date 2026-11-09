@@ -12,12 +12,18 @@ export function formatTime(t: string | null | undefined) {
   return `${hour}${m ? `:${String(m).padStart(2, "0")}` : ""} ${h < 12 ? "AM" : "PM"}`;
 }
 
-/** ["tue","wed","thu","fri"] → "Tue–Fri"; ["sat","sun"] → "Sat & Sun"; ["mon","wed"] → "Mon, Wed". */
+/** ["tue","wed","thu","fri"] → "Tue–Fri"; ["sun","mon","tue"] → "Sun–Tue" (wraps the week); ["sat","sun"] → "Sat & Sun". */
 export function formatDays(days: Weekday[]) {
   const idx = [...new Set(days)].map((d) => weekdays.indexOf(d)).sort((a, b) => a - b);
   if (idx.length === 1) return `${dayLong[weekdays[idx[0]!]!]}s`;
-  const consecutive = idx.every((v, i) => i === 0 || v === idx[i - 1]! + 1);
-  if (consecutive && idx.length > 2) return `${dayShort[weekdays[idx[0]!]!]}–${dayShort[weekdays[idx.at(-1)!]!]}`;
+  if (idx.length > 2 && idx.length < 7) {
+    // Find a rotation of the week in which the days form one consecutive run.
+    for (const start of idx) {
+      const run = idx.map((i) => (i - start + 7) % 7).sort((a, b) => a - b);
+      if (run.every((v, k) => v === k)) return `${dayShort[weekdays[start]!]}–${dayShort[weekdays[(start + run.length - 1) % 7]!]}`;
+    }
+  }
+  if (idx.length === 7) return "Daily";
   if (idx.length === 2) return idx.map((i) => dayShort[weekdays[i]!]).join(" & ");
   return idx.map((i) => dayShort[weekdays[i]!]).join(", ");
 }

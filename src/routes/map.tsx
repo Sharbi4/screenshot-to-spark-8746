@@ -18,6 +18,7 @@ export const Route = createFileRoute("/map")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  validateSearch: (search: Record<string, unknown>): { focus?: string | undefined } => ({ focus: typeof search["focus"] === "string" && /^[a-z0-9-]{1,120}$/.test(search["focus"]) ? search["focus"] : undefined }),
   loader: () => getMapConfig(),
   component: MapRoute,
 });
@@ -25,7 +26,8 @@ export const Route = createFileRoute("/map")({
 // Mapbox when a public token is configured; otherwise the original stylised prototype map.
 function MapRoute() {
   const { token } = Route.useLoaderData();
-  return token ? <MapboxDiscovery token={token} /> : <MapView />;
+  const { focus } = Route.useSearch();
+  return token ? <MapboxDiscovery token={token} focus={focus} /> : <MapView />;
 }
 
 function MapView() {

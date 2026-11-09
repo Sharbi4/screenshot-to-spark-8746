@@ -26,7 +26,7 @@ type FilterId = (typeof filters)[number]["id"];
 
 const matches = (l: MapListing, f: FilterId) => f === "all" || (f === "spot" ? l.listing_type === "spot" : l.listing_type === "market" && (l.kind === f || (f === "artisan" && l.kind === "craft")));
 
-export function MapboxDiscovery({ token }: { token: string }) {
+export function MapboxDiscovery({ token, focus }: { token: string; focus?: string | undefined }) {
   const container = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const fetchListings = useServerFn(getMapListings);
@@ -38,6 +38,16 @@ export function MapboxDiscovery({ token }: { token: string }) {
   const [notice, setNotice] = useState("");
   const visible = useMemo(() => listings.filter((l) => matches(l, filter)), [listings, filter]);
   const sel = useMemo(() => listings.find((l) => l.slug === selected) ?? null, [listings, selected]);
+  const focused = useRef(false);
+  // /map?focus=<slug>: fly to that market once its listing has loaded.
+  useEffect(() => {
+    if (!focus || focused.current) return;
+    const target = listings.find((l) => l.slug === focus);
+    if (!target || !mapRef.current) return;
+    focused.current = true;
+    mapRef.current.flyTo({ center: [target.longitude, target.latitude], zoom: 13 });
+    setSelected(target.slug);
+  }, [focus, listings]);
 
   const load = useCallback(async () => {
     const map = mapRef.current;

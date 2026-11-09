@@ -14,6 +14,9 @@ describe("schedule formatting", () => {
     expect(formatDays(["tue", "wed", "thu", "fri"])).toBe("Tue–Fri");
     expect(formatDays(["sat", "sun"])).toBe("Sat & Sun");
     expect(formatDays(["mon", "wed", "fri"])).toBe("Mon, Wed, Fri");
+    expect(formatDays(["sun", "mon", "tue"])).toBe("Sun–Tue");
+    expect(formatDays(["fri", "sat", "sun", "mon"])).toBe("Fri–Mon");
+    expect(formatDays(["mon", "tue", "wed", "thu", "fri", "sat", "sun"])).toBe("Daily");
   });
   it("never invents hours that were not published", () => {
     expect(formatRule({ label: "Market", days: ["sun"], opens: null, closes: null }).hours).toBe("Check the official website for hours");
